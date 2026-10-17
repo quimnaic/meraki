@@ -919,6 +919,47 @@
     }
   }
 
+  /* Corrección de espaciado inferior del Hero para que la curva blanca no pise los botones ni los textos */
+  .hero{
+    padding:72px 0 135px !important;
+    min-height:auto !important;
+  }
+  .hero::after{
+    bottom:-115px !important;
+    height:175px !important;
+    background:var(--paper) !important;
+    z-index:2 !important;
+    pointer-events:none !important;
+  }
+  .hero .wrap{
+    position:relative !important;
+    z-index:5 !important;
+  }
+  .hero-ctas a.btn-ghost{
+    background:rgba(23,54,51,.55) !important;
+    color:#FFFDF8 !important;
+    border:1.5px solid rgba(255,253,248,.62) !important;
+  }
+  .hero-ctas a.btn-ghost:hover{
+    background:rgba(23,54,51,.78) !important;
+    border-color:#FFFDF8 !important;
+  }
+  .hero-signals{
+    position:relative;
+    z-index:5;
+    color:rgba(255,253,248,.92) !important;
+    font-size:.84rem !important;
+    margin-top:4px;
+  }
+  #como-pedir{
+    background:linear-gradient(180deg, var(--paper) 0%, #EDF3EE 55%, var(--paper) 100%) !important;
+  }
+  @media(max-width:900px){
+    .hero{
+      padding:56px 0 115px !important;
+    }
+  }
+
 
   /* MERAKI · CTA "ARMAR MI PEDIDO" */
   a[href="#pedido"].btn,
@@ -984,6 +1025,401 @@
     to{left:140%}
   }
 
+  /* =========================================================
+     MERAKI · CATÁLOGO PASO A PASO (PASO 1: ELEGIR -> PASO 2: PEDIR)
+     ========================================================= */
+  .catalog-share-banner{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    max-width:980px; margin:0 auto 26px; padding:15px 22px;
+    background:linear-gradient(135deg, rgba(36,74,70,.96), rgba(23,54,51,.96));
+    color:var(--pearl); border-radius:20px;
+    box-shadow:0 16px 36px rgba(23,54,51,.14);
+    border:1px solid rgba(217,183,125,.28);
+  }
+  .catalog-share-copy{ display:flex; align-items:center; gap:12px; }
+  .catalog-share-Badge{
+    width:42px; height:42px; border-radius:12px;
+    background:rgba(241,194,143,.16); border:1px solid rgba(241,194,143,.35);
+    display:flex; align-items:center; justify-content:center; font-size:1.25rem; flex-shrink:0;
+  }
+  .catalog-share-copy h3{ font-size:1.05rem; color:var(--pearl); margin-bottom:2px; }
+  .catalog-share-copy p{ font-size:0.82rem; color:rgba(255,253,248,.78); }
+  .catalog-share-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+  .share-action-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 15px; border-radius:12px; font-family:'Nunito',sans-serif;
+    font-size:0.83rem; font-weight:800; cursor:pointer; text-decoration:none;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    border:1px solid transparent;
+  }
+  .share-action-btn.wa{
+    background:linear-gradient(135deg,#F1C28F 0%,#D9B77D 100%);
+    color:var(--cacao-deep);
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
+  }
+  .share-action-btn.copy{
+    background:rgba(255,253,248,.1);
+    color:var(--pearl);
+    border-color:rgba(255,253,248,.24);
+  }
+  .share-action-btn:hover{ transform:translateY(-2px); }
+
+  /* Indicador visual de Paso 1 y Paso 2 */
+  .wizard-steps{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    max-width:680px; margin:0 auto 30px;
+    background:var(--pearl); padding:8px; border-radius:999px;
+    border:1.5px solid rgba(36,74,70,.12);
+    box-shadow:0 10px 26px rgba(36,74,70,.06);
+  }
+  .wizard-step-btn{
+    flex:1; display:flex; align-items:center; justify-content:center; gap:10px;
+    padding:12px 18px; border-radius:999px; border:none;
+    background:transparent; color:#746157;
+    font-family:'Nunito',sans-serif; font-size:0.9rem; font-weight:800;
+    cursor:pointer; transition:all .25s ease;
+  }
+  .wizard-step-btn .step-num{
+    width:26px; height:26px; border-radius:50%;
+    background:rgba(36,74,70,.1); color:var(--cacao);
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:0.85rem; font-weight:700;
+    transition:all .25s ease;
+  }
+  .wizard-step-btn.is-active{
+    background:var(--cacao); color:var(--pearl);
+    box-shadow:0 8px 20px rgba(36,74,70,.22);
+  }
+  .wizard-step-btn.is-active .step-num{
+    background:var(--champagne); color:var(--cacao-deep);
+  }
+  .wizard-step-btn.is-done .step-num{
+    background:var(--pistachio); color:var(--cacao-deep);
+  }
+
+  .wizard-pane{ display:none; animation:softRise .35s ease both; }
+  .wizard-pane.is-active{ display:block; }
+
+  /* Toolbar: Search + Category Filter Pills */
+  .catalog-toolbar{
+    max-width:980px; margin:0 auto 26px;
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .catalog-search-row{
+    display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+  }
+  .catalog-search-box{
+    position:relative; flex:1 1 280px;
+  }
+  .catalog-search-box input{
+    width:100%; padding:12px 16px 12px 42px;
+    border-radius:14px; border:1.5px solid rgba(36,74,70,.16);
+    background:var(--pearl); color:var(--ink);
+    font-family:'Nunito',sans-serif; font-size:0.92rem; font-weight:600;
+    box-shadow:0 6px 18px rgba(36,74,70,.05);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .catalog-search-box input:focus{
+    outline:none; border-color:var(--cacao);
+    box-shadow:0 0 0 4px rgba(175,193,178,.28);
+  }
+  .catalog-search-icon{
+    position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    color:var(--pistachio-deep); pointer-events:none; font-size:1rem;
+  }
+  .catalog-count-pill{
+    font-size:0.82rem; font-weight:800; color:var(--cacao);
+    background:var(--oat); padding:9px 14px; border-radius:999px;
+    border:1px solid rgba(36,74,70,.08);
+  }
+
+  .catalog-filters{
+    display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
+  }
+  .filter-pill{
+    padding:9px 16px; border-radius:999px;
+    border:1.5px solid rgba(36,74,70,.15);
+    background:var(--pearl); color:var(--cacao);
+    font-family:'Nunito',sans-serif; font-size:0.84rem; font-weight:800;
+    cursor:pointer; transition:all .2s ease;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .filter-pill:hover{
+    border-color:var(--cacao); transform:translateY(-2px);
+    box-shadow:0 6px 14px rgba(36,74,70,.08);
+  }
+  .filter-pill.is-active{
+    background:var(--cacao); color:var(--pearl); border-color:var(--cacao);
+    box-shadow:0 8px 18px rgba(36,74,70,.22);
+  }
+  .filter-pill .pill-num{
+    font-size:0.72rem; padding:1px 7px; border-radius:999px;
+    background:rgba(36,74,70,.09); color:inherit;
+  }
+  .filter-pill.is-active .pill-num{
+    background:rgba(255,253,248,.2); color:var(--pearl);
+  }
+
+  /* Responsive Full-Width Catalog Grid */
+  .catalog-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(290px, 1fr));
+    gap:24px;
+    padding:4px 0 32px;
+  }
+  .catalog-grid .card{
+    flex:initial;
+    padding:14px 18px 20px;
+    border-radius:24px;
+    background:var(--pearl);
+    border:1.5px solid rgba(36,74,70,.09);
+    display:flex; flex-direction:column;
+    position:relative;
+  }
+  .catalog-grid .card.is-active{
+    border-color:var(--cacao);
+    box-shadow:0 18px 38px rgba(36,74,70,.15);
+    background:linear-gradient(180deg, #FFFDF8 0%, #FAF5EC 100%);
+  }
+  .catalog-grid .card.is-hidden{
+    display:none !important;
+  }
+
+  /* Polaroid style top inside each card (optimizado para fotos reales verticales) */
+  .catalog-grid .card-top{
+    margin:0 0 14px;
+    height:340px;
+    border-radius:18px;
+    border:6px solid var(--white);
+    border-bottom-width:14px;
+    box-shadow:0 10px 24px rgba(48,35,31,.11);
+    background:#F4ECE1;
+    cursor:zoom-in;
+  }
+  .card-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 68%;
+    display:block;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .card:hover .card-photo{
+    transform:scale(1.045);
+  }
+  .zoom-hint-badge{
+    position:absolute; top:10px; right:46px; z-index:3;
+    background:rgba(255,253,248,.88); color:var(--cacao-deep);
+    font-size:0.68rem; font-weight:800; padding:4px 9px;
+    border-radius:999px; backdrop-filter:blur(6px);
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+    pointer-events:none; opacity:0.92;
+  }
+  .card-top.blob-champagne{ background:radial-gradient(circle at 30% 20%, #F5E3C3, var(--champagne)); }
+  .card-top.blob-forest{ background:radial-gradient(circle at 30% 20%, #46736D, var(--cacao)); }
+  .card-top.blob-oat{ background:radial-gradient(circle at 30% 20%, #FFFDF8, #E5D6C5); }
+
+  .ref-badge{
+    position:absolute; top:10px; left:10px; z-index:3;
+    background:rgba(23,54,51,.86); color:var(--pearl);
+    font-size:0.72rem; font-weight:800; letter-spacing:0.08em;
+    padding:4px 10px; border-radius:999px; backdrop-filter:blur(6px);
+  }
+  .polaroid-caption{
+    position:absolute; bottom:8px; left:12px; z-index:3;
+    font-family:'Caveat',cursive; font-size:1.05rem; font-weight:700;
+    color:var(--cacao-deep); background:rgba(255,253,248,.92);
+    padding:2px 10px; border-radius:999px;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+  }
+  .share-item-btn{
+    position:absolute; bottom:8px; right:10px; z-index:3;
+    width:32px; height:32px; border-radius:50%;
+    border:1px solid rgba(36,74,70,.15);
+    background:rgba(255,253,248,.94); color:var(--cacao);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:0.85rem;
+    box-shadow:0 4px 10px rgba(0,0,0,.12);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .share-item-btn:hover{
+    transform:scale(1.1); background:var(--white);
+  }
+
+  .card-meta-row{
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    margin-bottom:5px;
+  }
+  .spec-pill{
+    font-size:0.71rem; font-weight:700; color:var(--pistachio-deep);
+    background:rgba(175,193,178,.22); padding:3px 9px; border-radius:999px;
+  }
+  .card .desc{
+    flex-grow:1; margin-bottom:12px; line-height:1.45; font-size:0.87rem;
+  }
+  .price-row{
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding-top:9px; border-top:1px dashed rgba(36,74,70,.12);
+    margin-bottom:2px;
+  }
+  .price-row .price{
+    font-family:'Fraunces',serif; font-size:1.22rem; color:var(--cacao); margin:0;
+  }
+  .price-row .price-sub{
+    font-size:0.72rem; color:#8C7A6B; font-weight:700;
+  }
+
+  .card.is-active .card-details{
+    max-height:300px; opacity:1; margin-top:12px;
+    padding-top:12px; border-top:1px solid rgba(36,74,70,.12);
+  }
+
+  .catalog-empty{
+    display:none; text-align:center; padding:42px 20px;
+    background:var(--pearl); border-radius:20px; border:1px dashed rgba(36,74,70,.2);
+    color:var(--cacao); margin:10px auto 24px; max-width:520px;
+  }
+  .catalog-empty.is-visible{ display:block; }
+
+  /* Barra inferior fija para pasar del Paso 1 al Paso 2 */
+  .step1-bottom-bar{
+    position:fixed; left:50%; bottom:20px; transform:translateX(-50%) translateY(130%);
+    width:min(680px, calc(100% - 28px));
+    background:var(--cacao-deep); color:var(--pearl);
+    padding:14px 20px; border-radius:20px;
+    box-shadow:0 20px 45px rgba(15,35,33,.38);
+    border:1px solid rgba(217,183,125,.38);
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    z-index:70; opacity:0; pointer-events:none;
+    transition:transform .32s cubic-bezier(.2,.8,.2,1), opacity .25s ease;
+  }
+  .step1-bottom-bar.is-visible{
+    transform:translateX(-50%) translateY(0);
+    opacity:1; pointer-events:auto;
+  }
+  .step1-bar-summary strong{
+    display:block; font-size:0.96rem; color:var(--pearl);
+  }
+  .step1-bar-summary span{
+    font-size:0.8rem; color:var(--champagne); font-weight:700;
+  }
+  .step1-next-btn{
+    padding:12px 20px; border-radius:13px; border:none;
+    background:linear-gradient(135deg,#F1C28F 0%,#D9B77D 100%);
+    color:var(--cacao-deep); font-family:'Nunito',sans-serif;
+    font-size:0.9rem; font-weight:800; cursor:pointer;
+    white-space:nowrap; box-shadow:0 8px 20px rgba(0,0,0,.22);
+    transition:transform .2s ease;
+  }
+  .step1-next-btn:hover{ transform:translateY(-2px); }
+
+  /* Vista del Paso 2 (Confirmación y Datos) */
+  .step2-wrap{
+    max-width:660px; margin:0 auto;
+  }
+  .back-to-step1-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    margin-bottom:18px; padding:10px 16px; border-radius:999px;
+    border:1.5px solid rgba(36,74,70,.2); background:var(--pearl);
+    color:var(--cacao); font-family:'Nunito',sans-serif;
+    font-size:0.86rem; font-weight:800; cursor:pointer;
+    transition:all .2s ease;
+  }
+  .back-to-step1-btn:hover{
+    border-color:var(--cacao); transform:translateX(-3px);
+  }
+
+  /* Recap enhancements with thumbnail */
+  .recap-item{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    padding:10px 0 !important;
+  }
+  .recap-item-left{
+    display:flex; align-items:center; gap:12px;
+  }
+  .recap-thumb{
+    width:46px; height:46px; border-radius:10px; object-fit:cover; object-position:center 68%;
+    border:2px solid var(--white); box-shadow:0 4px 10px rgba(0,0,0,.1); flex-shrink:0;
+  }
+  .recap-item-info strong{ color:var(--cacao-deep); font-size:0.88rem; display:block; }
+  .recap-item-meta{ display:block; font-size:0.78rem; color:#6E5D53; margin-top:2px; }
+  .recap-item-right{ display:flex; align-items:center; gap:8px; }
+  .recap-item-price{ font-weight:800; color:var(--cacao); white-space:nowrap; font-size:0.88rem; }
+  .recap-remove-btn{
+    background:rgba(216,170,165,.35); color:var(--cacao-deep);
+    border:none; width:22px; height:22px; border-radius:50%;
+    font-size:0.78rem; font-weight:900; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  .recap-remove-btn:hover{ background:var(--blush); }
+  .recap-total-bar{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:10px; padding-top:10px; border-top:2px solid rgba(36,74,70,.18);
+    font-size:0.96rem; font-weight:800; color:var(--cacao-deep);
+  }
+
+  /* Visor Lightbox para ver la foto completa de cada referencia */
+  .lightbox-modal{
+    position:fixed; inset:0; z-index:120;
+    background:rgba(15,30,28,.82); backdrop-filter:blur(8px);
+    display:flex; align-items:center; justify-content:center; padding:20px;
+    opacity:0; pointer-events:none; transition:opacity .25s ease;
+  }
+  .lightbox-modal.is-open{
+    opacity:1; pointer-events:auto;
+  }
+  .lightbox-content{
+    position:relative; max-width:440px; width:100%;
+    background:var(--pearl); border-radius:24px; padding:12px 12px 18px;
+    box-shadow:0 28px 65px rgba(0,0,0,.45); text-align:center;
+    transform:scale(.94); transition:transform .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .lightbox-modal.is-open .lightbox-content{
+    transform:scale(1);
+  }
+  .lightbox-content img{
+    width:100%; max-height:74vh; object-fit:contain; border-radius:16px; display:block; margin:0 auto 10px;
+  }
+  .lightbox-title{
+    font-family:'Fraunces',serif; font-size:1.05rem; color:var(--cacao-deep); margin-bottom:2px;
+  }
+  .lightbox-sub{
+    font-size:0.82rem; color:#6E5D53; font-weight:700;
+  }
+  .lightbox-close{
+    position:absolute; top:18px; right:18px;
+    width:36px; height:36px; border-radius:50%; border:none;
+    background:rgba(23,54,51,.85); color:var(--pearl);
+    font-size:1.1rem; font-weight:900; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 16px rgba(0,0,0,.25);
+  }
+
+  /* Toast notification for copied link */
+  .catalog-toast{
+    position:fixed; left:50%; bottom:92px; transform:translateX(-50%) translateY(20px);
+    background:var(--cacao-deep); color:var(--pearl);
+    padding:12px 20px; border-radius:999px; font-size:0.86rem; font-weight:800;
+    box-shadow:0 14px 32px rgba(0,0,0,.28); border:1px solid rgba(217,183,125,.4);
+    z-index:100; opacity:0; pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .catalog-toast.show{
+    opacity:1; transform:translateX(-50%) translateY(0);
+  }
+
+  @media (max-width:640px){
+    .catalog-share-banner{ padding:14px 16px; text-align:left; }
+    .catalog-share-actions{ width:100%; }
+    .share-action-btn{ flex:1 1 auto; justify-content:center; }
+    .wizard-steps{ flex-direction:column; border-radius:18px; gap:6px; }
+    .wizard-step-btn{ width:100%; justify-content:flex-start; }
+    .catalog-grid{ grid-template-columns:1fr; gap:18px; }
+    .catalog-grid .card-top{ height:310px; }
+    .step1-bottom-bar{ flex-direction:column; align-items:stretch; text-align:center; bottom:12px; padding:14px; }
+    .step1-next-btn{ width:100%; }
+  }
+
 </style>
 </head>
 <body>
@@ -997,8 +1433,8 @@
       MERAKI
     </div>
     <ul>
-      <li><a href="#productos">Colección</a></li>
       <li><a href="#como-pedir">Cómo comprar</a></li>
+      <li><a href="#productos">Catálogo</a></li>
       <li><a href="#pedido">Mi pedido</a></li>
     </ul>
   </div>
@@ -1017,7 +1453,7 @@
       <p class="lead">En MERAKI creamos velas y figuras para regalar, decorar y acompañar esos momentos que quieres guardar.</p>
 
       <div class="hero-ctas">
-        <a href="#productos" class="btn btn-primary">Ver colección <span aria-hidden="true">→</span></a>
+        <a href="#productos" class="btn btn-primary">Ver catálogo online <span aria-hidden="true">→</span></a>
         <a href="#pedido" class="btn btn-ghost">Quiero una MERAKI</a>
       </div>
 
@@ -1041,209 +1477,183 @@
   </div>
 </header>
 
-<section id="productos">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Elige tu vela</p>
-      <h2>Velas para regalar, decorar y disfrutar</h2>
-      <p>Elige tus favoritas, cuéntanos qué quieres y nosotros nos encargamos del resto.</p>
-    </div>
-    <p class="shelf-hint reveal">mira la colección →</p>
-
-    <div class="product-shelf" id="productsGrid">
-      <!-- Clásicas -->
-      <div class="card reveal" data-product="clasica">
-        <div class="card-top blob-sage">
-          <div class="picked-badge">✓</div>
-          <svg width="64" height="90" viewBox="0 0 64 90" fill="none">
-            <g class="flame"><path d="M32 4C32 4 24 14 24 22C24 27 27.6 30 32 30C36.4 30 40 27 40 22C40 14 32 4 32 4Z" fill="#FBF5EC"/></g>
-            <rect x="30" y="30" width="4" height="8" fill="#C9A24B"/>
-            <path d="M12 45C12 33 20 25 32 25C44 25 52 33 52 45V80C52 84 48.8 87 45 87H19C15.2 87 12 84 12 80V45Z" fill="#F5ECD9"/>
-            <circle cx="32" cy="52" r="8" fill="#E4D3B4"/>
-            <path d="M32 66C27 66 23 71 23 78V85H41V78C41 71 37 66 32 66Z" fill="#E4D3B4"/>
-          </svg>
-        </div>
-        <p class="eyebrow" style="margin-bottom:4px;">Clásica</p>
-        <h3>Vela con deseo</h3>
-        <p class="desc">Molde de nacimiento o copo en cera natural, con una tarjeta de deseo lista para regalar.</p>
-        <p class="price">Desde $25.000 <span>según cantidad y molde</span></p>
-        <label class="select-btn" data-role="select-label">
-          <input type="checkbox" data-role="include">
-          <span class="select-icon"></span>
-          <span data-role="select-text">Elegir esta vela</span>
-        </label>
-        <div class="card-details">
-          <div class="qty-row">
-            <label>Cantidad</label>
-            <div class="qty-controls">
-              <button type="button" data-action="minus">−</button>
-              <span data-role="qty">1</span>
-              <button type="button" data-action="plus">+</button>
-            </div>
-          </div>
-          <div class="field">
-            <label>Deseo o dedicatoria (opcional)</label>
-            <textarea placeholder="Ej: Para un 2027 lleno de propósito" data-role="note"></textarea>
-          </div>
-        </div>
-      </div>
-
-      <!-- Personalizadas -->
-      <div class="card reveal" data-product="personalizada">
-        <div class="card-top blob-terra">
-          <div class="picked-badge">✓</div>
-          <svg width="64" height="90" viewBox="0 0 64 90" fill="none">
-            <g class="flame"><path d="M32 4C32 4 24 14 24 22C24 27 27.6 30 32 30C36.4 30 40 27 40 22C40 14 32 4 32 4Z" fill="#FBF5EC"/></g>
-            <rect x="30" y="30" width="4" height="8" fill="#C9A24B"/>
-            <rect x="16" y="38" width="32" height="46" rx="8" fill="#F5ECD9"/>
-            <rect x="21" y="52" width="22" height="16" rx="3" fill="#8C3F63"/>
-            <line x1="24" y1="57" x2="40" y2="57" stroke="#F5ECD9" stroke-width="1.6"/>
-            <line x1="24" y1="62" x2="35" y2="62" stroke="#F5ECD9" stroke-width="1.6"/>
-          </svg>
-        </div>
-        <p class="eyebrow" style="margin-bottom:4px;">A tu gusto</p>
-        <h3>Vela personalizada</h3>
-        <p class="desc">Elige el nombre, la frase o la fecha grabada en la cera. Regalos únicos, con significado.</p>
-        <p class="price">Desde $35.000 <span>según personalización</span></p>
-        <label class="select-btn" data-role="select-label">
-          <input type="checkbox" data-role="include">
-          <span class="select-icon"></span>
-          <span data-role="select-text">Elegir esta vela</span>
-        </label>
-        <div class="card-details">
-          <div class="qty-row">
-            <label>Cantidad</label>
-            <div class="qty-controls">
-              <button type="button" data-action="minus">−</button>
-              <span data-role="qty">1</span>
-              <button type="button" data-action="plus">+</button>
-            </div>
-          </div>
-          <div class="field">
-            <label>Texto a personalizar</label>
-            <input type="text" placeholder="Ej: Familia Rodríguez, Navidad 2026" data-role="note">
-          </div>
-        </div>
-      </div>
-
-      <!-- Combos -->
-      <div class="card reveal" data-product="combo">
-        <div class="card-top blob-berry">
-          <div class="picked-badge">✓</div>
-          <svg width="80" height="90" viewBox="0 0 80 90" fill="none">
-            <g class="flame"><path d="M22 4C22 4 15 13 15 20C15 24.5 18 27 22 27C26 27 29 24.5 29 20C29 13 22 4 22 4Z" fill="#FBF5EC"/></g>
-            <g class="flame"><path d="M56 12C56 12 49 21 49 28C49 32.5 52 35 56 35C60 35 63 32.5 63 28C63 21 56 12 56 12Z" fill="#FBF5EC"/></g>
-            <rect x="8" y="27" width="28" height="50" rx="7" fill="#F5ECD9"/>
-            <rect x="42" y="35" width="28" height="42" rx="7" fill="#F5ECD9"/>
-            <circle cx="22" cy="46" r="6" fill="#E4D3B4"/>
-            <rect x="49" y="48" width="14" height="10" rx="2" fill="#8C3F63"/>
-          </svg>
-        </div>
-        <p class="eyebrow" style="margin-bottom:4px;">El favorito</p>
-        <h3>Combo deseo + personalizada</h3>
-        <p class="desc">Una vela clásica de deseos y una personalizada, juntas. Dos emociones en un solo regalo.</p>
-        <p class="price">Desde $55.000 <span>según combo elegido</span></p>
-        <label class="select-btn" data-role="select-label">
-          <input type="checkbox" data-role="include">
-          <span class="select-icon"></span>
-          <span data-role="select-text">Elegir este combo</span>
-        </label>
-        <div class="card-details">
-          <div class="qty-row">
-            <label>Cantidad</label>
-            <div class="qty-controls">
-              <button type="button" data-action="minus">−</button>
-              <span data-role="qty">1</span>
-              <button type="button" data-action="plus">+</button>
-            </div>
-          </div>
-          <div class="field">
-            <label>Detalles del combo</label>
-            <textarea placeholder="Ej: 1 clásica + 1 personalizada a nombre de..." data-role="note"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="como-pedir">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="eyebrow">Es muy fácil</p>
+      <p class="eyebrow">Paso a paso · Sin enredos</p>
       <h2>De MERAKI para tu hogar</h2>
     </div>
     <div class="wick-line reveal">
       <div class="step">
         <div class="dot">1</div>
-        <h4>Elige tus velas</h4>
-        <p>Marca las que quieras arriba y ajusta cantidad.</p>
+        <h4>Paso 1: Elige tus velas</h4>
+        <p>Explora el catálogo, selecciona tus favoritas y elige la cantidad o dedicatoria.</p>
       </div>
       <div class="step">
         <div class="dot">2</div>
-        <h4>Llena el formulario</h4>
-        <p>Tus datos y los detalles quedan organizados.</p>
+        <h4>Avanza al siguiente paso</h4>
+        <p>Cuando termines de escoger, toca el botón <strong>"Continuar al Paso 2"</strong>.</p>
       </div>
       <div class="step">
         <div class="dot">3</div>
-        <h4>Envía por WhatsApp</h4>
-        <p>Un clic y se abre el chat con todo listo.</p>
+        <h4>Paso 2: Completa tus datos</h4>
+        <p>Revisa tu resumen de velas seleccionadas y escribe tu nombre y ciudad.</p>
       </div>
       <div class="step">
         <div class="dot">4</div>
-        <h4>Coordinamos entrega</h4>
-        <p>Confirmamos precio final, pago y entrega o envío.</p>
+        <h4>Envía por WhatsApp</h4>
+        <p>Tu pedido llega listo a nuestro WhatsApp para coordinar pago y entrega.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="pedido">
+<section id="productos">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow" style="color:var(--champagne)">Hablemos</p>
-      <h2>Cuéntanos qué te gustaría</h2>
-      <p>Déjanos tus datos y preferencias. Te escribimos por WhatsApp para confirmar todo con calma.</p>
+    <div class="section-head reveal" id="catalogTopAnchor">
+      <p class="eyebrow">Catálogo Online · Colección 2026</p>
+      <h2>Haz tu pedido en 2 pasos</h2>
+      <p>Primero escoge tus velas favoritas con calma y luego pasa a confirmar tus datos para enviarlo por WhatsApp.</p>
     </div>
 
-    <form class="order-form reveal" id="orderForm">
-      <h3>Tus datos</h3>
-      <div class="form-grid">
-        <div class="field full">
-          <label>Nombre completo *</label>
-          <input type="text" id="fNombre" required placeholder="Ej: María Pérez">
-        </div>
-        <div class="field">
-          <label>Teléfono de contacto</label>
-          <input type="tel" id="fTelefono" placeholder="Ej: 300 123 4567">
-        </div>
-        <div class="field">
-          <label>Fecha en que lo necesitas</label>
-          <input type="date" id="fFecha">
-        </div>
-        <div class="field full">
-          <label>Ciudad / barrio de entrega</label>
-          <input type="text" id="fCiudad" placeholder="Ej: Bogotá, Chapinero">
-        </div>
-        <div class="field full">
-          <label>Nota adicional (opcional)</label>
-          <textarea id="fNota" placeholder="Cualquier detalle extra para tu pedido"></textarea>
+    <!-- Barra para compartir el catálogo por WhatsApp -->
+    <div class="catalog-share-banner reveal">
+      <div class="catalog-share-copy">
+        <div class="catalog-share-Badge" aria-hidden="true">🕯️</div>
+        <div>
+          <h3>Catálogo Digital MERAKI</h3>
+          <p>¿Quieres enviarle este catálogo a alguien o guardarlo en tu WhatsApp?</p>
         </div>
       </div>
-
-      <div class="order-recap" id="orderRecap">
-        <strong>Resumen de tu pedido</strong>
-        <ul id="orderRecapList"><li class="empty">Aún no has marcado ninguna vela arriba.</li></ul>
+      <div class="catalog-share-actions">
+        <button type="button" class="share-action-btn wa" id="shareCatalogWaBtn">
+          <span>📲</span> Enviar catálogo por WhatsApp
+        </button>
+        <button type="button" class="share-action-btn copy" id="copyCatalogLinkBtn">
+          <span>🔗</span> Copiar link del catálogo
+        </button>
       </div>
+    </div>
 
-      <button type="submit" class="submit-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="#0b3d20"/></svg>
-        Enviar pedido por WhatsApp
+    <!-- Indicador de Pasos (Paso 1 -> Paso 2) -->
+    <div class="wizard-steps reveal" role="tablist" aria-label="Pasos para hacer tu pedido">
+      <button type="button" class="wizard-step-btn is-active" id="tabStep1" role="tab" aria-selected="true">
+        <span class="step-num" id="step1NumBadge">1</span>
+        <span>Paso 1: Elige tus velas</span>
       </button>
-      <p class="form-msg" id="formMsg"></p>
-    </form>
+      <button type="button" class="wizard-step-btn" id="tabStep2" role="tab" aria-selected="false">
+        <span class="step-num">2</span>
+        <span id="tabStep2Label">Paso 2: Tus datos y pedir</span>
+      </button>
+    </div>
+
+    <!-- ==========================================
+         PASO 1: SELECCIONAR VELAS DEL CATÁLOGO
+         ========================================== -->
+    <div class="wizard-pane is-active" id="wizardStep1" role="tabpanel">
+      <!-- Buscador y Filtros de Categoría -->
+      <div class="catalog-toolbar">
+        <div class="catalog-search-row">
+          <div class="catalog-search-box">
+            <span class="catalog-search-icon" aria-hidden="true">🔍</span>
+            <input type="text" id="catalogSearchInput" placeholder="Buscar por referencia o estilo (ej: REF-01, muñecos, colores, blancas)...">
+          </div>
+          <span class="catalog-count-pill" id="catalogCountPill">Mostrando 6 referencias</span>
+        </div>
+
+        <div class="catalog-filters" id="catalogFilters" role="tablist" aria-label="Filtrar por estilo de vela">
+          <button type="button" class="filter-pill is-active" data-filter="all">Todas <span class="pill-num">6</span></button>
+          <button type="button" class="filter-pill" data-filter="colores">Velas de Colores <span class="pill-num">3</span></button>
+          <button type="button" class="filter-pill" data-filter="blancas">Blancas y Pastel <span class="pill-num">3</span></button>
+        </div>
+      </div>
+
+      <div class="catalog-empty" id="catalogEmptyState">
+        <h3 style="margin-bottom:6px;">No encontramos esa referencia 🕯️</h3>
+        <p style="font-size:0.9rem;color:#746157;">Prueba con otra palabra o selecciona "Todas" para ver el catálogo completo.</p>
+      </div>
+
+      <!-- Cuadrícula del Catálogo a ancho completo -->
+      <div class="catalog-grid" id="productsGrid"></div>
+    </div>
+
+    <!-- ==========================================
+         PASO 2: COMPLETAR DATOS Y ENVIAR A WHATSAPP
+         ========================================== -->
+    <div class="wizard-pane" id="wizardStep2" role="tabpanel">
+      <div class="step2-wrap" id="pedido">
+        <button type="button" class="back-to-step1-btn" id="backToStep1Btn">
+          <span>←</span> Volver al Paso 1 (Cambiar o agregar más velas)
+        </button>
+
+        <form class="order-form" id="orderForm">
+          <div class="order-recap" id="orderRecap">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;">
+              <strong style="margin-bottom:0;">Resumen de tus velas elegidas</strong>
+              <button type="button" id="editSelectionLinkBtn" style="background:none;border:none;color:var(--cacao);font-family:'Nunito',sans-serif;font-size:0.8rem;font-weight:800;text-decoration:underline;cursor:pointer;">+ Agregar otra referencia</button>
+            </div>
+            <ul id="orderRecapList">
+              <li class="empty">Aún no has seleccionado ninguna vela en el Paso 1.</li>
+            </ul>
+            <div id="orderRecapTotal"></div>
+          </div>
+
+          <h3>Completa tus datos de entrega</h3>
+          <div class="form-grid">
+            <div class="field full">
+              <label>Nombre completo *</label>
+              <input type="text" id="fNombre" required placeholder="Ej: María Pérez">
+            </div>
+            <div class="field">
+              <label>Teléfono / WhatsApp</label>
+              <input type="tel" id="fTelefono" placeholder="Ej: 300 123 4567">
+            </div>
+            <div class="field">
+              <label>Fecha en que lo necesitas</label>
+              <input type="date" id="fFecha">
+            </div>
+            <div class="field full">
+              <label>Ciudad / barrio de entrega</label>
+              <input type="text" id="fCiudad" placeholder="Ej: Bogotá, Chapinero">
+            </div>
+            <div class="field full">
+              <label>Nota o idea especial (opcional)</label>
+              <textarea id="fNota" placeholder="¿Quieres algún detalle adicional o tienes alguna pregunta? Escríbenos aquí"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitOrderBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="#0b3d20"/></svg>
+            <span id="submitOrderBtnText">Enviar pedido por WhatsApp</span>
+          </button>
+          <p class="form-msg" id="formMsg"></p>
+        </form>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<!-- Barra flotante del Paso 1 que aparece en cuanto eliges al menos 1 vela -->
+<div class="step1-bottom-bar" id="step1BottomBar" role="region" aria-label="Progreso de tu selección">
+  <div class="step1-bar-summary">
+    <strong id="step1BarTitle">1 referencia seleccionada</strong>
+    <span id="step1BarTotal">Total estimado: $25.000</span>
+  </div>
+  <button type="button" class="step1-next-btn" id="goToStep2Btn">
+    Continuar al Paso 2: Hacer pedido →
+  </button>
+</div>
+
+<!-- Modal Lightbox para ver la foto completa de cada referencia -->
+<div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Vista ampliada de la vela">
+  <div class="lightbox-content">
+    <button type="button" class="lightbox-close" id="lightboxCloseBtn" aria-label="Cerrar foto">×</button>
+    <img id="lightboxImg" src="" alt="">
+    <h4 class="lightbox-title" id="lightboxTitle"></h4>
+    <p class="lightbox-sub" id="lightboxSub"></p>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -1252,30 +1662,294 @@
       <p>Velas hechas a mano para llenar tu casa de calidez, regalar momentos y crear recuerdos.</p>
     </div>
     <div>
-      <h3>¿Ya encontraste tu favorita?</h3>
-      <a href="#pedido" class="btn btn-primary">Armar mi pedido</a>
+      <h3>¿Lista para elegir tu vela?</h3>
+      <a href="#productos" class="btn btn-primary" id="footerCatalogBtn">Ir al catálogo (Paso 1)</a>
     </div>
   </div>
   <p class="foot-bottom">© 2026 MERAKI · Hecho a mano con cariño</p>
 </footer>
 
-<button class="jump-fab" id="jumpFab">🕯️ Mi pedido</button>
+<button class="jump-fab" id="jumpFab" style="display:none;">🕯️ Mi pedido</button>
+<div class="catalog-toast" id="catalogToast" role="status" aria-live="polite"></div>
 
 <script>
   // ⚠️ Configura aquí tu número de WhatsApp con indicativo de país, sin espacios ni signos (ej: 573001234567)
   const WHATSAPP_NUMBER = "573013410766";
 
-  const PRODUCTS = {
-    clasica: { name: "Vela clásica con deseo", priceLabel: "Desde $25.000" },
-    personalizada: { name: "Vela personalizada", priceLabel: "Desde $35.000" },
-    combo: { name: "Combo deseo + personalizada", priceLabel: "Desde $55.000" }
-  };
+  // 📦 CATÁLOGO REAL DE VELAS PERSONALIZADAS MERAKI (Carpeta catalogo/)
+  const CATALOG_ITEMS = [
+    {
+      id: "ref01_animalitos_colores",
+      ref: "REF-01",
+      image: "catalogo/REF1.png",
+      category: "colores",
+      categoryLabel: "Velas de Colores",
+      tag: "★ Favorita · Colores",
+      name: "Velas Personalizadas · Animalitos Acuarela (Colores)",
+      specs: "Pack x10 velas · Personalizadas",
+      desc: "Velas de los deseos en tonos pastel surtidos con tiernos personajes navideños (Papá Noel, panda, pingüino, búho, osito) y deseos o nombres.",
+      price: 25000,
+      priceNote: "Paquete personalizado",
+      noteLabel: "Nombres o deseos a personalizar (opcional)",
+      notePlaceholder: "Ej: Amor, Éxito, Salud, Familia Gómez..."
+    },
+    {
+      id: "ref02_animalitos_blancas",
+      ref: "REF-02",
+      image: "catalogo/REF2.png",
+      category: "blancas",
+      categoryLabel: "Blancas y Pastel",
+      tag: "Acabado perlado",
+      name: "Velas Personalizadas · Animalitos Acuarela (Blancas)",
+      specs: "Pack x10 velas · Personalizadas",
+      desc: "Velas blancas con fondo acuarela suave, ilustraciones de animalitos navideños y palabras de buenos deseos o nombres personalizados.",
+      price: 25000,
+      priceNote: "Paquete personalizado",
+      noteLabel: "Nombres o deseos a personalizar (opcional)",
+      notePlaceholder: "Ej: Gratitud, Paz, Abundancia, nombres de la familia..."
+    },
+    {
+      id: "ref03_munecos_nieve",
+      ref: "REF-03",
+      image: "catalogo/REF3.png",
+      category: "colores",
+      categoryLabel: "Velas de Colores",
+      tag: "Edición Muñecos de Nieve",
+      name: "Velas Personalizadas · Muñecos de Nieve (Colores)",
+      specs: "Pack x10 velas · Personalizadas",
+      desc: "Velas en colores pastel vibrantes decoradas con muñecos de nieve, bastones de caramelo, pinos y muérdago junto a tus deseos o nombres.",
+      price: 25000,
+      priceNote: "Paquete personalizado",
+      noteLabel: "Nombres o deseos a personalizar (opcional)",
+      notePlaceholder: "Ej: Paz, Amor, Dios, Salud, Éxito..."
+    },
+    {
+      id: "ref04_ternura_rosa_blanco",
+      ref: "REF-04",
+      image: "catalogo/REF4.png",
+      category: "blancas",
+      categoryLabel: "Blancas y Pastel",
+      tag: "Tonos Rosa & Blanco",
+      name: "Velas Personalizadas · Ternura Rosa & Blanco",
+      specs: "Pack x10 velas · Personalizadas",
+      desc: "Combinación delicada de velas blancas y rosa pastel con animalitos de invierno, galletas de jengibre, pinos y campanas doradas.",
+      price: 25000,
+      priceNote: "Paquete personalizado",
+      noteLabel: "Nombres o deseos a personalizar (opcional)",
+      notePlaceholder: "Ej: Lista de deseos o nombres para cada vela..."
+    },
+    {
+      id: "ref05_navidad_colores",
+      ref: "REF-05",
+      image: "catalogo/REF5.png",
+      category: "colores",
+      categoryLabel: "Velas de Colores",
+      tag: "Clásicos de Navidad",
+      name: "Velas Personalizadas · Tradición Navideña (Colores)",
+      specs: "Pack x10 velas · Personalizadas",
+      desc: "Velas de colores surtidos con diseño navideño clásico: Papá Noel, renos, pingüinos, regalos y estrellas con caligrafía destacada.",
+      price: 25000,
+      priceNote: "Paquete personalizado",
+      noteLabel: "Nombres o deseos a personalizar (opcional)",
+      notePlaceholder: "Ej: Dios, Paz, Amor, Salud, Prosperidad..."
+    },
+    {
+      id: "ref06_navidad_blancas",
+      ref: "REF-06",
+      image: "catalogo/REF6.png",
+      category: "blancas",
+      categoryLabel: "Blancas y Pastel",
+      tag: "Clásico Verde & Blanco",
+      name: "Velas Personalizadas · Tradición Navideña (Blancas)",
+      specs: "Pack x10 velas · Personalizadas",
+      desc: "Velas blancas con franja verde navideña, personajes tradicionales (Papá Noel, renos, ositos polares) y tus deseos o nombres favoritos.",
+      price: 25000,
+      priceNote: "Paquete personalizado",
+      noteLabel: "Nombres o deseos a personalizar (opcional)",
+      notePlaceholder: "Ej: Nombres de tus invitados o deseos para la noche de velitas..."
+    }
+  ];
 
+  // Mapa rápido por ID
+  const PRODUCTS_BY_ID = {};
+  CATALOG_ITEMS.forEach(item => { PRODUCTS_BY_ID[item.id] = item; });
+
+  function formatCOP(num){
+    return "$" + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  let currentWizardStep = 1;
+
+  const productsGrid = document.getElementById('productsGrid');
   const recapList = document.getElementById('orderRecapList');
+  const recapTotal = document.getElementById('orderRecapTotal');
+  const tabStep1 = document.getElementById('tabStep1');
+  const tabStep2 = document.getElementById('tabStep2');
+  const tabStep2Label = document.getElementById('tabStep2Label');
+  const step1NumBadge = document.getElementById('step1NumBadge');
+  const wizardStep1 = document.getElementById('wizardStep1');
+  const wizardStep2 = document.getElementById('wizardStep2');
+  const step1BottomBar = document.getElementById('step1BottomBar');
+  const step1BarTitle = document.getElementById('step1BarTitle');
+  const step1BarTotal = document.getElementById('step1BarTotal');
+  const toastEl = document.getElementById('catalogToast');
+
+  // Lightbox elements
+  const lightboxModal = document.getElementById('lightboxModal');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxSub = document.getElementById('lightboxSub');
+
+  function openLightbox(item){
+    lightboxImg.src = item.image;
+    lightboxImg.alt = item.name;
+    lightboxTitle.textContent = `${item.ref} · ${item.name}`;
+    lightboxSub.textContent = `${item.specs} · ${formatCOP(item.price)}`;
+    lightboxModal.classList.add('is-open');
+  }
+
+  function closeLightbox(){
+    lightboxModal.classList.remove('is-open');
+  }
+
+  document.getElementById('lightboxCloseBtn').addEventListener('click', closeLightbox);
+  lightboxModal.addEventListener('click', (e) => {
+    if(e.target === lightboxModal) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeLightbox();
+  });
+
+  function showToast(text){
+    toastEl.textContent = text;
+    toastEl.classList.add('show');
+    clearTimeout(showToast._timer);
+    showToast._timer = setTimeout(() => toastEl.classList.remove('show'), 3000);
+  }
+
+  // Cambiar entre Paso 1 (Catálogo) y Paso 2 (Datos y envío)
+  function goToStep(stepNum, shouldScroll = true){
+    const state = getOrderState();
+    const count = Object.values(state).reduce((acc, item) => acc + item.qty, 0);
+
+    if(stepNum === 2 && count === 0){
+      currentWizardStep = 1;
+      wizardStep1.classList.add('is-active');
+      wizardStep2.classList.remove('is-active');
+      tabStep1.classList.add('is-active');
+      tabStep2.classList.remove('is-active');
+      if(shouldScroll){
+        document.getElementById('productos').scrollIntoView({behavior:'smooth'});
+      }
+      showToast('Paso 1: Primero selecciona al menos una referencia del catálogo 🕯️');
+      updateBottomBar();
+      return;
+    }
+
+    currentWizardStep = stepNum;
+    const isStep1 = stepNum === 1;
+
+    wizardStep1.classList.toggle('is-active', isStep1);
+    wizardStep2.classList.toggle('is-active', !isStep1);
+
+    tabStep1.classList.toggle('is-active', isStep1);
+    tabStep1.setAttribute('aria-selected', isStep1 ? 'true' : 'false');
+    tabStep1.classList.toggle('is-done', !isStep1 && count > 0);
+    step1NumBadge.textContent = (!isStep1 && count > 0) ? '✓' : '1';
+
+    tabStep2.classList.toggle('is-active', !isStep1);
+    tabStep2.setAttribute('aria-selected', !isStep1 ? 'true' : 'false');
+
+    updateBottomBar();
+
+    if(shouldScroll){
+      document.getElementById('catalogTopAnchor').scrollIntoView({behavior:'smooth'});
+    }
+  }
+
+  tabStep1.addEventListener('click', () => goToStep(1, false));
+  tabStep2.addEventListener('click', () => goToStep(2, false));
+  document.getElementById('goToStep2Btn').addEventListener('click', () => goToStep(2, true));
+  document.getElementById('backToStep1Btn').addEventListener('click', () => goToStep(1, true));
+  document.getElementById('editSelectionLinkBtn').addEventListener('click', () => goToStep(1, true));
+
+  // Interceptar cualquier enlace a #pedido (barra superior, hero) para respetar el paso a paso
+  document.querySelectorAll('a[href="#pedido"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const count = Object.values(getOrderState()).reduce((acc, item) => acc + item.qty, 0);
+      if(count > 0){
+        goToStep(2, true);
+      } else {
+        goToStep(1, true);
+        showToast('Paso 1: Elige tus velas favoritas para armar tu pedido 🕯️');
+      }
+    });
+  });
+
+  document.getElementById('footerCatalogBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    goToStep(1, true);
+  });
+
+  // Renderizar tarjetas del catálogo con las fotos reales de catalogo/
+  function renderCatalog(){
+    productsGrid.innerHTML = CATALOG_ITEMS.map(item => {
+      return `
+        <article class="card reveal in-view" data-product="${item.id}" data-category="${item.category}" data-search="${(item.ref + ' ' + item.name + ' ' + item.desc + ' ' + item.categoryLabel).toLowerCase()}">
+          <div class="card-top" data-zoom-id="${item.id}" title="Clic para ver la foto completa">
+            <span class="ref-badge">${item.ref}</span>
+            <span class="zoom-hint-badge">🔍 Ver foto</span>
+            <div class="picked-badge" title="Seleccionada">✓</div>
+            <img class="card-photo" src="${item.image}" alt="${item.name}" loading="lazy">
+            <span class="polaroid-caption">${item.tag}</span>
+            <button type="button" class="share-item-btn" data-share-ref="${item.id}" title="Compartir esta referencia por WhatsApp" aria-label="Compartir ${item.name} por WhatsApp">📲</button>
+          </div>
+
+          <div class="card-meta-row">
+            <p class="eyebrow" style="margin:0;">${item.categoryLabel}</p>
+            <span class="spec-pill">${item.specs}</span>
+          </div>
+
+          <h3>${item.name}</h3>
+          <p class="desc">${item.desc}</p>
+
+          <div class="price-row">
+            <p class="price">${formatCOP(item.price)}</p>
+            <span class="price-sub">${item.priceNote}</span>
+          </div>
+
+          <label class="select-btn" data-role="select-label">
+            <input type="checkbox" data-role="include">
+            <span class="select-icon"></span>
+            <span data-role="select-text">Seleccionar esta referencia</span>
+          </label>
+
+          <div class="card-details">
+            <div class="qty-row">
+              <label>Cantidad</label>
+              <div class="qty-controls">
+                <button type="button" data-action="minus" aria-label="Disminuir cantidad">−</button>
+                <span data-role="qty">1</span>
+                <button type="button" data-action="plus" aria-label="Aumentar cantidad">+</button>
+              </div>
+            </div>
+
+            <div class="field" style="margin-bottom:4px;">
+              <label>${item.noteLabel}</label>
+              <textarea placeholder="${item.notePlaceholder}" data-role="note"></textarea>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    bindCardEvents();
+  }
 
   function getOrderState(){
     const state = {};
-    document.querySelectorAll('.card').forEach(card => {
+    document.querySelectorAll('#productsGrid .card').forEach(card => {
       const key = card.dataset.product;
       const checked = card.querySelector('[data-role="include"]').checked;
       if(checked){
@@ -1287,111 +1961,261 @@
     return state;
   }
 
-  function refreshRecap(){
-    const state = getOrderState();
-    const keys = Object.keys(state);
-    if(keys.length === 0){
-      recapList.innerHTML = '<li class="empty">Aún no has marcado ninguna vela arriba.</li>';
-      return;
-    }
-    recapList.innerHTML = keys.map(k => {
-      const p = PRODUCTS[k];
-      const item = state[k];
-      const noteHtml = item.note ? ` — <em>${item.note}</em>` : '';
-      return `<li>${p.name} × ${item.qty}${noteHtml}</li>`;
-    }).join('');
-  }
-
-  document.querySelectorAll('.card').forEach(card => {
-    const qtySpan = card.querySelector('[data-role="qty"]');
+  function toggleCardSelection(productId, forceState){
+    const card = document.querySelector(`#productsGrid .card[data-product="${productId}"]`);
+    if(!card) return;
     const checkbox = card.querySelector('[data-role="include"]');
     const selectLabel = card.querySelector('[data-role="select-label"]');
     const selectText = card.querySelector('[data-role="select-text"]');
-    const defaultText = selectText.textContent;
-    let qty = 1;
 
-    checkbox.addEventListener('change', () => {
-      const active = checkbox.checked;
-      card.classList.toggle('is-active', active);
-      selectLabel.classList.toggle('is-selected', active);
-      selectText.textContent = active ? '✓ Lista para tu pedido' : defaultText;
-      document.getElementById('jumpFab').classList.toggle('has-items', document.querySelectorAll('[data-role="include"]:checked').length > 0);
-      refreshRecap();
+    checkbox.checked = typeof forceState === 'boolean' ? forceState : !checkbox.checked;
+    const active = checkbox.checked;
+    card.classList.toggle('is-active', active);
+    selectLabel.classList.toggle('is-selected', active);
+    selectText.textContent = active ? '✓ Referencia seleccionada' : 'Seleccionar esta referencia';
+    refreshRecap();
+  }
+
+  function updateBottomBar(){
+    const state = getOrderState();
+    const keys = Object.keys(state);
+    const totalItems = keys.reduce((acc, k) => acc + state[k].qty, 0);
+    const totalPrice = keys.reduce((acc, k) => acc + (PRODUCTS_BY_ID[k].price * state[k].qty), 0);
+
+    if(totalItems > 0){
+      step1BarTitle.textContent = totalItems === 1 ? '1 paquete seleccionado' : `${totalItems} paquetes seleccionados`;
+      step1BarTotal.textContent = `Total estimado: ${formatCOP(totalPrice)}`;
+      tabStep2Label.textContent = `Paso 2: Hacer pedido (${totalItems})`;
+    } else {
+      tabStep2Label.textContent = 'Paso 2: Tus datos y pedir';
+    }
+
+    // Mostrar la barra inferior fija solo cuando estamos en el Paso 1 y hay al menos 1 vela elegida
+    const showBar = currentWizardStep === 1 && totalItems > 0;
+    step1BottomBar.classList.toggle('is-visible', showBar);
+  }
+
+  function refreshRecap(){
+    const state = getOrderState();
+    const keys = Object.keys(state);
+    const totalItems = keys.reduce((acc, k) => acc + state[k].qty, 0);
+
+    updateBottomBar();
+
+    if(keys.length === 0){
+      recapList.innerHTML = '<li class="empty">No tienes velas seleccionadas. Vuelve al Paso 1 para elegir tus favoritas.</li>';
+      recapTotal.innerHTML = '';
+      if(currentWizardStep === 2){
+        goToStep(1, true);
+      }
+      return;
+    }
+
+    let total = 0;
+    recapList.innerHTML = keys.map(k => {
+      const p = PRODUCTS_BY_ID[k];
+      const item = state[k];
+      const sub = p.price * item.qty;
+      total += sub;
+      const noteHtml = item.note ? `<span class="recap-item-meta">📝 ${item.note}</span>` : '';
+      return `
+        <li class="recap-item">
+          <div class="recap-item-left">
+            <img class="recap-thumb" src="${p.image}" alt="${p.name}">
+            <div class="recap-item-info">
+              <strong>[${p.ref}] ${p.name} × ${item.qty}</strong>
+              ${noteHtml}
+            </div>
+          </div>
+          <div class="recap-item-right">
+            <span class="recap-item-price">${formatCOP(sub)}</span>
+            <button type="button" class="recap-remove-btn" data-remove-id="${k}" title="Quitar del pedido" aria-label="Quitar ${p.name}">×</button>
+          </div>
+        </li>
+      `;
+    }).join('');
+
+    recapList.querySelectorAll('[data-remove-id]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        toggleCardSelection(btn.dataset.removeId, false);
+      });
     });
 
-    card.querySelector('[data-action="minus"]').addEventListener('click', () => {
-      qty = Math.max(1, qty - 1);
-      qtySpan.textContent = qty;
-      refreshRecap();
+    recapTotal.innerHTML = `
+      <div class="recap-total-bar">
+        <span>Total estimado (${totalItems} ${totalItems === 1 ? 'paquete' : 'paquetes'})</span>
+        <span>${formatCOP(total)}</span>
+      </div>
+    `;
+  }
+
+  function bindCardEvents(){
+    document.querySelectorAll('#productsGrid .card').forEach(card => {
+      const qtySpan = card.querySelector('[data-role="qty"]');
+      const checkbox = card.querySelector('[data-role="include"]');
+      const selectLabel = card.querySelector('[data-role="select-label"]');
+      const selectText = card.querySelector('[data-role="select-text"]');
+      const noteInput = card.querySelector('[data-role="note"]');
+      const shareBtn = card.querySelector('[data-share-ref]');
+      const cardTop = card.querySelector('[data-zoom-id]');
+      const defaultText = selectText.textContent;
+
+      // Abrir foto completa al hacer clic en la imagen polaroid
+      cardTop.addEventListener('click', (e) => {
+        if(e.target.closest('[data-share-ref]')) return;
+        const item = PRODUCTS_BY_ID[card.dataset.product];
+        if(item) openLightbox(item);
+      });
+
+      checkbox.addEventListener('change', () => {
+        const active = checkbox.checked;
+        card.classList.toggle('is-active', active);
+        selectLabel.classList.toggle('is-selected', active);
+        selectText.textContent = active ? '✓ Referencia seleccionada' : defaultText;
+        refreshRecap();
+      });
+
+      card.querySelector('[data-action="minus"]').addEventListener('click', () => {
+        const currentQty = parseInt(qtySpan.textContent, 10) || 1;
+        qtySpan.textContent = Math.max(1, currentQty - 1);
+        refreshRecap();
+      });
+
+      card.querySelector('[data-action="plus"]').addEventListener('click', () => {
+        const currentQty = parseInt(qtySpan.textContent, 10) || 1;
+        qtySpan.textContent = Math.min(30, currentQty + 1);
+        refreshRecap();
+      });
+
+      noteInput.addEventListener('input', refreshRecap);
+
+      // Compartir una vela individual por WhatsApp
+      shareBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const item = PRODUCTS_BY_ID[card.dataset.product];
+        const url = window.location.origin + window.location.pathname + `?ref=${item.ref}#productos`;
+        const text = `¡Mira esta referencia del catálogo de *MERAKI*! 🕯️✨%0A%0A*${item.ref} · ${item.name}*%0A${item.desc}%0A💰 Precio: ${formatCOP(item.price)}%0A%0AVer en el catálogo: ${encodeURIComponent(url)}`;
+        window.open(`https://wa.me/?text=${text}`, '_blank');
+      });
     });
-    card.querySelector('[data-action="plus"]').addEventListener('click', () => {
-      qty = Math.min(20, qty + 1);
-      qtySpan.textContent = qty;
-      refreshRecap();
+  }
+
+  // Filtros y búsqueda del catálogo
+  let activeCategory = 'all';
+  const searchInput = document.getElementById('catalogSearchInput');
+  const countPill = document.getElementById('catalogCountPill');
+  const emptyState = document.getElementById('catalogEmptyState');
+
+  function applyCatalogFilters(){
+    const query = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    document.querySelectorAll('#productsGrid .card').forEach(card => {
+      const matchCat = activeCategory === 'all' || card.dataset.category === activeCategory;
+      const matchQuery = !query || card.dataset.search.includes(query);
+      const visible = matchCat && matchQuery;
+      card.classList.toggle('is-hidden', !visible);
+      if(visible) visibleCount++;
     });
-    card.querySelector('[data-role="note"]').addEventListener('input', refreshRecap);
+
+    countPill.textContent = visibleCount === 1 ? 'Mostrando 1 referencia' : `Mostrando ${visibleCount} referencias`;
+    emptyState.classList.toggle('is-visible', visibleCount === 0);
+  }
+
+  document.querySelectorAll('#catalogFilters .filter-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#catalogFilters .filter-pill').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      activeCategory = btn.dataset.filter;
+      applyCatalogFilters();
+    });
   });
 
+  searchInput.addEventListener('input', applyCatalogFilters);
+
+  // Botones de compartir el catálogo completo por WhatsApp o copiar link
+  function getCatalogShareUrl(){
+    return window.location.origin + window.location.pathname + '#productos';
+  }
+
+  document.getElementById('shareCatalogWaBtn').addEventListener('click', () => {
+    const url = getCatalogShareUrl();
+    const msg = `¡Hola! 🕯️✨ Te comparto el *Catálogo Online de MERAKI · Velas que hacen hogar*.%0A%0APuedes ver todas las referencias y hacer tu pedido aquí:%0A${encodeURIComponent(url)}`;
+    window.open(`https://wa.me/?text=${msg}`, '_blank');
+  });
+
+  document.getElementById('copyCatalogLinkBtn').addEventListener('click', async () => {
+    const url = getCatalogShareUrl();
+    try {
+      await navigator.clipboard.writeText(url);
+      showToast('✓ ¡Link del catálogo copiado! Listo para pegar en WhatsApp');
+    } catch {
+      prompt('Copia este link para compartir el catálogo por WhatsApp:', url);
+    }
+  });
+
+  // Envío del pedido en el Paso 2 a MERAKI por WhatsApp
   document.getElementById('orderForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const formMsg = document.getElementById('formMsg');
     const state = getOrderState();
     const keys = Object.keys(state);
     const nombre = document.getElementById('fNombre').value.trim();
-
-    if(keys.length === 0){
-      formMsg.textContent = 'Marca al menos una vela en la sección de arriba antes de enviar.';
-      document.getElementById('productos').scrollIntoView({behavior:'smooth'});
-      return;
-    }
-    if(!nombre){
-      formMsg.textContent = 'Escribe tu nombre para poder enviar el pedido.';
-      return;
-    }
-    formMsg.textContent = '';
-
     const telefono = document.getElementById('fTelefono').value.trim();
     const fecha = document.getElementById('fFecha').value;
     const ciudad = document.getElementById('fCiudad').value.trim();
     const notaGeneral = document.getElementById('fNota').value.trim();
 
-    let msg = "¡Hola MERAKI! 🕯️ Quiero hacer un pedido%0A%0A";
-    msg += "*Datos de contacto*%0A";
-    msg += `Nombre: ${nombre}%0A`;
-    if(telefono) msg += `Teléfono: ${telefono}%0A`;
-    if(ciudad) msg += `Ciudad/barrio: ${ciudad}%0A`;
-    if(fecha) msg += `Fecha que lo necesito: ${fecha}%0A`;
+    if(keys.length === 0){
+      goToStep(1, true);
+      return;
+    }
+    if(!nombre){
+      formMsg.textContent = 'Escribe tu nombre completo para enviarte la confirmación por WhatsApp.';
+      return;
+    }
+    formMsg.textContent = '';
 
-    msg += "%0A*Pedido*%0A";
+    let msg = "¡Hola MERAKI! 🕯️ Vi el catálogo online y quiero hacer este pedido:%0A%0A";
+    msg += "*1. Velas seleccionadas*%0A";
+
+    let total = 0;
     keys.forEach(k => {
-      const p = PRODUCTS[k];
+      const p = PRODUCTS_BY_ID[k];
       const item = state[k];
-      msg += `• ${p.name} x${item.qty} (${p.priceLabel})`;
-      if(item.note) msg += ` — ${item.note}`;
-      msg += "%0A";
+      const sub = p.price * item.qty;
+      total += sub;
+      msg += `• *[${p.ref}] ${p.name}* x${item.qty} (${formatCOP(sub)})%0A`;
+      if(item.note) msg += `   Detalle/Dedicatoria: ${item.note}%0A`;
     });
+    msg += `*Total estimado: ${formatCOP(total)}*%0A%0A`;
 
-    if(notaGeneral) msg += `%0ANota adicional: ${notaGeneral}%0A`;
-    msg += "%0A¿Me ayudas a confirmar precio, disponibilidad y entrega? ¡Gracias! 🤎";
+    msg += "*2. Mis datos de entrega*%0A";
+    msg += `• Nombre: ${nombre}%0A`;
+    if(telefono) msg += `• Teléfono: ${telefono}%0A`;
+    if(ciudad) msg += `• Ciudad/barrio: ${ciudad}%0A`;
+    if(fecha) msg += `• Fecha para cuando lo necesito: ${fecha}%0A`;
+    if(notaGeneral) msg += `• Nota adicional: ${notaGeneral}%0A`;
+
+    msg += "%0A¿Me ayudas a confirmar disponibilidad, datos de pago y envío? ¡Gracias! 🤎";
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
   });
 
-  document.getElementById('jumpFab').addEventListener('click', () => {
-    document.getElementById('pedido').scrollIntoView({behavior:'smooth'});
-  });
+  // Inicializar catálogo
+  renderCatalog();
+  refreshRecap();
 
-  function updateFab(){
-    const count = Object.values(getOrderState()).reduce((sum,item) => sum + item.qty, 0);
-    const fab = document.getElementById('jumpFab');
-    fab.innerHTML = count > 0 ? `🕯️ Mi pedido <span style="background:var(--champagne);color:var(--cacao-deep);border-radius:999px;padding:2px 7px;font-size:.72rem;">${count}</span>` : '🕯️ Mi pedido';
-    fab.classList.toggle('has-items', count > 0);
+  // Si entran desde un link compartido con ?ref=REF-XX, filtrar o resaltar esa referencia
+  const params = new URLSearchParams(window.location.search);
+  const sharedRef = params.get('ref');
+  if(sharedRef){
+    searchInput.value = sharedRef;
+    applyCatalogFilters();
+    setTimeout(() => {
+      document.getElementById('productos').scrollIntoView({behavior:'smooth'});
+    }, 300);
   }
-  document.querySelectorAll('[data-action="minus"],[data-action="plus"],[data-role="note"]').forEach(el => {
-    el.addEventListener('click', updateFab);
-    el.addEventListener('input', updateFab);
-  });
-  updateFab();
 
   // Falling snow
   const snowLayer = document.getElementById('snow');
