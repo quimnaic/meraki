@@ -3083,8 +3083,16 @@
         e.stopPropagation();
         const item = PRODUCTS_BY_ID[card.dataset.product];
         const url = window.location.origin + window.location.pathname + `?ref=${item.ref}#productos`;
-        const text = `¡Mira esta referencia del catálogo de *MERAKI*! 🕯️✨%0A%0A*${item.ref} · ${item.name}*%0A${item.desc}%0A💰 Precio: ${formatCOP(item.price)}%0A%0AVer en el catálogo: ${encodeURIComponent(url)}`;
-        window.open(`https://wa.me/?text=${text}`, '_blank');
+        const text = [
+          "¡Mira esta referencia del catálogo de *MERAKI*! ✨",
+          "",
+          `*${item.ref} · ${item.name}*`,
+          item.desc,
+          `Precio: ${formatCOP(item.price)}`,
+          "",
+          `Ver en el catálogo: ${url}`
+        ].join("\n");
+        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
       });
     });
   }
@@ -3129,8 +3137,13 @@
 
   document.getElementById('shareCatalogWaBtn').addEventListener('click', () => {
     const url = getCatalogShareUrl();
-    const msg = `¡Hola! 🕯️✨ Te comparto el *Catálogo Online de MERAKI · Velas que hacen hogar*.%0A%0APuedes ver todas las referencias y hacer tu pedido aquí:%0A${encodeURIComponent(url)}`;
-    window.open(`https://wa.me/?text=${msg}`, '_blank');
+    const msg = [
+      "¡Hola! ✨ Te comparto el *Catálogo Online de MERAKI · Velas que hacen hogar*.",
+      "",
+      "Puedes ver todas las referencias y hacer tu pedido aquí:",
+      url
+    ].join("\n");
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, '_blank');
   });
 
   document.getElementById('copyCatalogLinkBtn').addEventListener('click', async () => {
@@ -3165,8 +3178,11 @@
     }
     formMsg.textContent = '';
 
-    let msg = "¡Hola MERAKI! 🕯️ Vi el catálogo online y quiero hacer este pedido:%0A%0A";
-    msg += "*1. Velas seleccionadas*%0A";
+    const lines = [
+      "¡Hola MERAKI! ✨ Vi el catálogo online y quiero hacer este pedido:",
+      "",
+      "*1. Velas seleccionadas*"
+    ];
 
     let total = 0;
     keys.forEach(k => {
@@ -3174,21 +3190,26 @@
       const item = state[k];
       const sub = p.price * item.qty;
       total += sub;
-      const modelTxt = item.modelChoice ? ` [${item.modelChoice}]` : '';
-      msg += `• *[${p.ref}] ${p.name}*${modelTxt} x${item.qty} (${formatCOP(sub)})%0A`;
+      // Limpiar emojis compuestos de la versión para que WhatsApp Web/Móvil nunca corte la línea
+      const cleanModel = item.modelChoice ? item.modelChoice.replace(/[^\p{L}\p{N}\s/&.,()-]/gu, '').trim() : '';
+      const modelTxt = cleanModel ? ` (${cleanModel})` : '';
+      lines.push(`- *[${p.ref}] ${p.name}*${modelTxt} x${item.qty} = ${formatCOP(sub)}`);
     });
-    msg += `*Total estimado: ${formatCOP(total)}*%0A%0A`;
 
-    msg += "*2. Mis datos de entrega*%0A";
-    msg += `• Nombre: ${nombre}%0A`;
-    if(telefono) msg += `• Teléfono: ${telefono}%0A`;
-    if(ciudad) msg += `• Ciudad/barrio: ${ciudad}%0A`;
-    if(fecha) msg += `• Fecha para cuando lo necesito: ${fecha}%0A`;
-    if(notaGeneral) msg += `• Nota adicional: ${notaGeneral}%0A`;
+    lines.push(`*Total estimado: ${formatCOP(total)}*`);
+    lines.push("");
+    lines.push("*2. Mis datos de entrega*");
+    lines.push(`- Nombre: ${nombre}`);
+    if(telefono) lines.push(`- Teléfono: ${telefono}`);
+    if(ciudad) lines.push(`- Ciudad/barrio: ${ciudad}`);
+    if(fecha) lines.push(`- Fecha para cuando lo necesito: ${fecha}`);
+    if(notaGeneral) lines.push(`- Nota adicional: ${notaGeneral}`);
+    lines.push("");
+    lines.push("¿Me ayudas a confirmar disponibilidad, datos de pago y envío? ¡Gracias!");
 
-    msg += "%0A¿Me ayudas a confirmar disponibilidad, datos de pago y envío? ¡Gracias! 🤎";
-
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+    const fullMsg = lines.join("\n");
+    const waUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(fullMsg)}`;
+    window.open(waUrl, '_blank');
   });
 
   // Inicializar catálogo
