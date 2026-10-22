@@ -1894,7 +1894,7 @@
 <div class="snow" id="snow"></div>
 <!-- BANNER ENVÍO GRATIS -->
 <aside style="background:linear-gradient(135deg, #F1C28F 0%, #D9B77D 100%); color:var(--cacao-deep); font-weight:800; font-size:0.83rem; text-align:center; padding:9px 16px; position:relative; z-index:60; letter-spacing:0.02em; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-  🚚 <strong>¡Envío GRATIS en Bogotá</strong> por compras superiores a <strong>$50.000</strong>!
+  🚚 <strong>¡Envío GRATIS en Bogotá</strong> por compras superiores a <strong>$60.000</strong>!
 </aside>
 
 <nav class="topbar">
@@ -2091,16 +2091,16 @@
         <div class="catalog-search-row">
           <div class="catalog-search-box">
             <span class="catalog-search-icon" aria-hidden="true">🔍</span>
-            <input type="text" id="catalogSearchInput" placeholder="Buscar por referencia o estilo (ej: farol, piña, ángel, virgen, sagrada familia, tren, estrellas, arbolito)...">
+            <input type="text" id="catalogSearchInput" placeholder="Buscar por referencia, nombre o estilo (ej: combos, moldes, farol, velas, yumbo, pesebre)...">
           </div>
-          <span class="catalog-count-pill" id="catalogCountPill">Mostrando 34 referencias</span>
+          <span class="catalog-count-pill" id="catalogCountPill">Mostrando 40 referencias</span>
         </div>
 
-        <div class="catalog-filters" id="catalogFilters" role="tablist" aria-label="Filtrar por estilo de vela">
-          <button type="button" class="filter-pill is-active" data-filter="all">Todas <span class="pill-num">34</span></button>
-          <button type="button" class="filter-pill" data-filter="combos">🎁 Combos y Cajas de Regalo <span class="pill-num">6</span></button>
-          <button type="button" class="filter-pill" data-filter="colores">Velas de Colores <span class="pill-num">12</span></button>
-          <button type="button" class="filter-pill" data-filter="blancas">Blancas y Doradas <span class="pill-num">16</span></button>
+        <div class="catalog-filters" id="catalogFilters" role="tablist" aria-label="Filtrar catálogo">
+          <button type="button" class="filter-pill is-active" data-filter="all">Todas <span class="pill-num">40</span></button>
+          <button type="button" class="filter-pill" data-filter="combos">🎁 Combos <span class="pill-num">6</span></button>
+          <button type="button" class="filter-pill" data-filter="moldes">🕯️ Moldes <span class="pill-num">11</span></button>
+          <button type="button" class="filter-pill" data-filter="velas">✨ Velas <span class="pill-num">23</span></button>
         </div>
       </div>
 
@@ -2218,577 +2218,565 @@
 
   // 📦 CATÁLOGO REAL DE VELAS PERSONALIZADAS Y COMBOS MERAKI (Carpeta catalogo/)
   const CATALOG_ITEMS = [
-    {
-      id: "combo01_caja_deseos_estrellas",
-      ref: "COMBO-01",
-      image: "catalogo/COMBO1_abierta.jpg",
-      imageBox: "catalogo/COMBO1_caja.jpg",
-      category: "combos",
-      categoryLabel: "Combos y Cajas de Regalo",
-      tag: "🎁 Caja Regalo · 5 Velas + Estrellas",
-      name: "Combo Caja de los Deseos · Estrellas Doradas",
-      specs: "Caja x5 velas · Con visor y tarjeta",
-      desc: "5 velas blancas personalizadas con motivos navideños y estrella dorada en la parte superior (ej: Familia, Sueños, Gratitud, Salud, Calma) en caja de regalo con ventana y etiqueta Merry Christmas.",
-      price: 12000,
-      priceNote: "Caja lista para regalar"
-    },
-    {
-      id: "combo02_figuras_navidenas_x7",
-      ref: "COMBO-02",
-      image: "catalogo/COMBO2_abierta.jpg",
-      imageBox: "catalogo/COMBO2_caja.jpg",
-      category: "combos",
-      categoryLabel: "Combos y Cajas de Regalo",
-      tag: "🎁 Caja Regalo · 7 Mini Figuras",
-      name: "Combo Mini Figuras Navideñas Escultóricas (x7)",
-      specs: "Caja x7 velitas · Figuras 3D",
-      desc: "Set de 7 velitas escultóricas pintadas a mano: Papá Noel, copo de nieve, muñeco de nieve, galleta de jengibre, bastón de caramelo, pino nevado y cajita de regalo, en estuche con visor y tarjeta.",
-      price: 15000,
-      priceNote: "Caja lista para regalar"
-    },
-    {
-      id: "combo03_duo_muneco_pino",
-      ref: "COMBO-03",
-      image: "catalogo/COMBO3_abierta.jpg",
-      imageBox: "catalogo/COMBO3_caja.jpg",
-      category: "combos",
-      categoryLabel: "Combos y Cajas de Regalo",
-      tag: "🎁 Caja Dúo · Muñeco & Pino",
-      name: "Combo Dúo Invierno · Muñeco de Nieve y Pino",
-      specs: "Caja x2 velas · Escultóricas",
-      desc: "Tierno muñeco de nieve con sombrero y bufanda tejida acompañado de un pino verde nevado con estrella dorada, presentados en caja kraft con ventana y tarjeta navideña.",
-      price: 25000,
-      priceNote: "Caja lista para regalar"
-    },
-    {
-      id: "combo04_trio_reno_jengibre_pino",
-      ref: "COMBO-04",
-      image: "catalogo/COMBO4_abierta.jpg",
-      imageBox: "catalogo/COMBO4_caja.jpg",
-      category: "combos",
-      categoryLabel: "Combos y Cajas de Regalo",
-      tag: "🎁 Caja Trío · Reno con Cascabel",
-      name: "Combo Trío Navideño · Reno, Jengibre y Pino",
-      specs: "Caja x3 velas · Escultóricas",
-      desc: "Vela de reno con cinta roja y cascabel real junto a galletita de jengibre y pino verde nevado con estrella dorada, todo empacado en caja de regalo con visor y etiqueta Merry Christmas.",
-      price: 30000,
-      priceNote: "Caja lista para regalar"
-    },
-    {
-      id: "combo05_trio_jengibre_pino_estrella",
-      ref: "COMBO-05",
-      image: "catalogo/COMBO5_estrella.jpg",
-      fitContain: true,
-      category: "combos",
-      categoryLabel: "Combos y Cajas de Regalo",
-      tag: "🎁 Caja Trío · Jengibre, Pino & Estrella",
-      name: "Combo Trío Navideño · Jengibre, Pino & Copo Estrella",
-      specs: "Caja x3 velas · Escultóricas",
-      desc: "Galleta de jengibre con detalles dorados y botones plateados, pino navideño blanco con estrella dorada y luces de colores, y copo estrella escarchado con cascabel en caja de regalo.",
-      price: 30000,
-      priceNote: "Caja lista para regalar"
-    },
-    {
-      id: "combo06_trio_estrellas_escarchadas",
-      ref: "COMBO-06",
-      image: "catalogo/COMBO6_estrellas_colores.jpg",
-      imageBox: "catalogo/COMBO6_estrellas_blancas.jpg",
-      btnSwitchToAlt: "✨ Ver en Blancas con Dorado",
-      btnSwitchToMain: "🎨 Ver en Tricolor Metalizado",
-      lbLabelMain: "🎨 Tricolor Metalizado (Azul, Rojo & Blanco)",
-      lbLabelAlt: "✨ Blancas con Escarcha Dorada",
-      modelOptions: ["🎨 Tricolor Metalizado", "✨ Blancas con Dorado"],
-      category: "combos",
-      categoryLabel: "Combos y Cajas de Regalo · 2 Modelos",
-      tag: "❄️✨ Caja x3 Copos Estrella · 2 Modelos",
-      name: "Combo Trío Copos Estrella Navideños Escarchados",
-      specs: "Caja x3 estrellas · Elige versión",
-      desc: "Set de 3 velas escultóricas de copo de nieve / estrella navideña con relieve escarchado dorado en caja de regalo. Disponible en versión Tricolor Metalizado (azul, rojo y blanco) o en Blancas con Dorado y cascabel.",
-      price: 20000,
-      priceNote: "Caja lista para regalar"
-    },
-    {
-      id: "ref08_deseos_letras_metalizadas",
-      ref: "REF-08",
-      image: "catalogo/REF8_dorada.jpg",
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "✨ Velas Blancas · Letras Doradas",
-      name: "Velas de los Deseos · Caligrafía & Símbolos (Dorado)",
-      specs: "Pack x10 velas · Acabado dorado",
-      desc: "Velas blancas elegantes con deseos en caligrafía dorada metalizada e íconos navideños en dorado (estrella, pino, trébol, ángel, corazón).",
-      price: 15000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref22_deseos_letras_multicolor",
-      ref: "REF-22",
-      image: "catalogo/REF8_multicolor.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "🎨 Velas Blancas · Letras Multicolor",
-      name: "Velas de los Deseos · Caligrafía & Símbolos (Multicolor)",
-      specs: "Pack x10 velas · Letras multicolor",
-      desc: "Velas blancas con deseos en caligrafía metalizada multicolor e íconos navideños de colores (reno, pino, esfera, corazón, manopla, campana, trébol).",
-      price: 15000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref10_caligrafia_clasica_dual",
-      ref: "REF-10",
-      image: "catalogo/REF10_colores.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "🌈 Velas de Colores · Caligrafía Clásica",
-      name: "Velas de los Deseos · Caligrafía Clásica (Colores)",
-      specs: "Pack x10 velas · Colores vibrantes",
-      desc: "Velas en colores vibrantes surtidos con buenos deseos en letra cursiva plateada (Amor, Dinero, Perdón, Trabajo, Paz, Dios, Abundancia, Gratitud, Éxito, Salud).",
-      price: 25000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref24_caligrafia_clasica_blanca",
-      ref: "REF-24",
-      image: "catalogo/REF10_blanca.jpg",
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "✨ Velas Blancas · Caligrafía Dorada",
-      name: "Velas de los Deseos · Caligrafía Clásica (Blancas con Dorado)",
-      specs: "Pack x10 velas · Letras doradas",
-      desc: "Diseño clásico y elegante en velas blancas con tus buenos deseos en letra cursiva dorada metalizada (Amor, Dinero, Perdón, Gratitud, Paz, Dios, Abundancia, Salud, Éxito, Viajes).",
-      price: 25000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref25_farol_colores",
-      ref: "REF-25",
-      image: "catalogo/FAROL_1_colores.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "🏮🌈 Especial Farol · Velas de Colores",
-      name: "Velas para Farol · Deseos & Símbolos (Colores)",
-      specs: "Pack x10 velas · Letra blanca",
-      desc: "Pack de 10 velas de colores vivos ideales para farolitos, decoradas con deseos y símbolos navideños en blanco (Alegría, Gratitud, Fortuna, Amor, Dios, Paz, Salud, Perdón, Familia, Trabajo).",
-      price: 15000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref96_farol_colores",
-      ref: "REF-96",
-      image: "catalogo/FAROL_3_color.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "🏮🌈 Especial Farol · Velas de Colores",
-      name: "Velas para Farol · Deseos & Símbolos (Colores)",
-      specs: "Pack x10 velas · Letra blanca",
-      desc: "Pack de 10 velas de colores vivos ideales para farolitos, decoradas con deseos y símbolos navideños en blanco (Alegría, Gratitud, Fortuna, Amor, Dios, Paz, Salud, Perdón, Familia, Trabajo).",
-      price: 15000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref26_farol_blancas",
-      ref: "REF-26",
-      image: "catalogo/FAROL_2_blancas.jpg",
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "🏮✨ Especial Farol · Blancas con Dorado",
-      name: "Velas para Farol · Deseos & Símbolos (Blancas con Dorado)",
-      specs: "Pack x10 velas · Letra dorada",
-      desc: "Pack de 10 velas blancas ideales para farolitos, decoradas con deseos y símbolos navideños en dorado metalizado (Alegría, Fortuna, Salud, Familia, Gratitud, Dios, Amor, Trabajo, Perdón, Paz).",
-      price: 15000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref11_arbolitos_navidenos",
-      ref: "REF-11",
-      image: "catalogo/REF11_arbolitos.jpg",
-      fitContain: true,
-      modelOptions: [
-        "🌲 Menta & Blanco",
-        "🌲 Verde Nevado",
-        "🌲 Bicolor & Dorado",
-        "🌲 Bosque & Dorado"
-      ],
-      category: "colores",
-      categoryLabel: "Velas Escultóricas · 4 Tonos",
-      tag: "🌲 Pino Escultórico · 4 Tonos",
-      name: "Pinos Navideños Escultóricos Pintados a Mano",
-      specs: "Unidad · Elige tu tono favorito",
-      desc: "Vela artesanal en forma de pino navideño con relieve texturizado, efecto nieve y destellos dorados pintados a mano. Disponible en 4 combinaciones de verde, blanco y dorado.",
-      price: 11000,
-      priceNote: "Valor por unidad"
-    },
-    {
-      id: "ref12_cirio_artesanal_cruz",
-      ref: "REF-12",
-      image: "catalogo/REF12_cirio.jpg",
-      fitContain: true,
-      category: "blancas",
-      categoryLabel: "Cirios y Ocasiones Especiales",
-      tag: "✨ Cirio Artesanal · Cruz Dorada",
-      name: "Cirio Decorado Artesanal · Cruz & Espigas Doradas",
-      specs: "Cirio grande · Decorado a mano",
-      desc: "Cirio blanco tallado en relieve con cruz dorada central, espigas de trigo, guarda rosada labrada, base trenzada dorada y moño de organza con rosa.",
-      price: 40000,
-      priceNote: "Pieza especial hecha a mano"
-    },
-    {
-      id: "ref13_arbol_casita_navidena",
-      ref: "REF-13",
-      image: "catalogo/ARB_1.jpg",
-      fitContain: true,
-      gallery: [
-        { src: "catalogo/ARB_1.jpg", label: "🎁 Estuche (Blanco/Verde)" },
-        { src: "catalogo/ARB_3.jpg", label: "🌲 Verde & Dorado" },
-        { src: "catalogo/ARB_4.jpg", label: "❄️ Verde Nevado" },
-        { src: "catalogo/ARB_6.jpg", label: "🎁 Estuche (Blanco)" },
-        { src: "catalogo/ARB_5.jpg", label: "🤍 Blanco Perlado" },
-        { src: "catalogo/ARB_2.jpg", label: "🎄 Blanco & Verde" }
-      ],
-      modelOptions: [
-        "🎄 Blanco & Punta Verde",
-        "🌲 Verde con Dorado",
-        "❄️ Verde Nevado",
-        "🤍 Blanco Perlado"
-      ],
-      modelImages: [
-        "catalogo/ARB_1.jpg",
-        "catalogo/ARB_3.jpg",
-        "catalogo/ARB_4.jpg",
-        "catalogo/ARB_6.jpg"
-      ],
-      category: "colores",
-      categoryLabel: "Vela Escultórica en Estuche · 4 Tonos",
-      tag: "🏠🎄 Árbol Casita · Con Estuche",
-      name: "Árbol Casita Navideña Escultórico con Cascabel & Estuche",
-      specs: "En estuche regalo · 4 tonos disponibles",
-      desc: "Vela escultórica de pino navideño con casita tallada en el tronco, cascabel dorado y estuche transparente de regalo con tarjeta Merry Christmas. Disponible en 4 tonos pintados a mano.",
-      price: 20000,
-      priceNote: "Incluye estuche de regalo"
-    },
-    {
-      id: "ref14_virgencitas_filo_dorado",
-      ref: "REF-14",
-      image: "catalogo/REF14_virgenes.jpg",
-      fitContain: true,
-      modelOptions: [
-        "🤍 Blanco Marfil & Dorado",
-        "🩵 Azul Celeste & Dorado",
-        "🩷 Rosa Pastel & Dorado"
-      ],
-      category: "colores",
-      categoryLabel: "Velas Escultóricas · 3 Tonos",
-      tag: "🙏✨ Virgencita Dulce · 3 Tonos",
-      name: "Virgencita Dulce con Filo Dorado Pintado a Mano",
-      specs: "Unidad · Elige entre 3 tonos",
-      desc: "Tierna vela escultórica de la Virgencita en oración con flores en relieve y manto delineado en dorado a mano. Disponible en blanco marfil, azul celeste o rosa pastel.",
-      price: 10000,
-      priceNote: "Valor por unidad"
-    },
-    {
-      id: "ref15_tren_infantil_osito",
-      ref: "REF-15",
-      image: "catalogo/REF15_tren.jpg",
-      fitContain: true,
-      gallery: [
-        { src: "catalogo/REF15_tren.jpg", label: "🎨 Blanca" },
-        { src: "catalogo/ref_15.jpeg", label: "🎨 A Color" },
-      ],
-      modelOptions: [
-        "🚂🧸 Tren Escultórico · Osito & Casita",
-        "🚂🧸 Tren Escultórico · Osito & Casita (Color)",
-      ],
-      category: "blancas",
-      categoryLabel: "Velas Escultóricas Especiales",
-      tag: "🚂🧸 Tren Escultórico · Osito & Casita",
-      name: "Vela Escultórica Tren de los Sueños · Osito, Casita & Auto",
-      specs: "Vela 3D · Doble pabilo",
-      desc: "Vela artesanal tallada en forma de vagón de tren con ruedas en relieve, osito con corbatín, casita y carrito. Ideal para detalles especiales y recordatorios.",
-      price: 16000,
-      priceNote: "Pieza escultórica 3D"
-    },
-    {
-      id: "ref16_sagrada_familia_rosas",
-      ref: "REF-16",
-      image: "catalogo/REF16_sagrada_familia_rosas.jpg",
-      fitContain: true,
-      gallery: [
-        { src: "catalogo/REF16_sagrada_familia_rosas.jpg", label: "🎨 Blanca" },
-        { src: "catalogo/REF16_sagrada_familia_rosas_1.jpg", label: "🎨 A Color" },
-      ],
-      modelOptions: [
-        "🤍🌹 Sagrada Familia · Base de Rosas",
-        "🤍🌹 Sagrada Familia · Base de Rosas (Color)",
-      ],
-      category: "blancas",
-      categoryLabel: "Sagrada Familia y Devoción",
-      tag: "🤍🌹 Sagrada Familia · Base de Rosas",
-      name: "Sagrada Familia Clásica sobre Base de Rosas",
-      specs: "Vela escultórica · Alto relieve",
-      desc: "Escultura en cera de San José, la Virgen María y el Niño Jesús abrazados sobre una delicada base de rosas talladas en alto relieve.",
-      price: 22000,
-      priceNote: "Pieza escultórica artesanal"
-    },
-    {
-      id: "ref40_chozas",
-      ref: "REF-40",
-      image: "catalogo/ref_40_nacimiento.jpg",
-      fitContain: true,
-      gallery: [
-        { src: "catalogo/ref_40_nacimiento_blanco.jpg", label: "🎨 Blanca" },
-        { src: "catalogo/ref_40_nacimiento.jpg", label: "🎨 A Color" },
-      ],
-      modelOptions: [
-        "🤍🌹 Nacimiento de Belén",
-        "🤍🌹 Nacimiento de Belén (Color)",
-      ],
-      category: "blancas",
-      categoryLabel: "Sagrada Familia y Devoción",
-      tag: "🤍🌹 Nacimiento de Belén",
-      name: "Nacimiento de Belén",
-      specs: "Vela escultórica · Alto relieve",
-      desc: "Escultura en cera de San José, la Virgen María y el Niño Jesús en alto relieve.",
-      price: 15000,
-      priceNote: "Pieza escultórica artesanal"
-    },
-    {
-      id: "ref17_sagrada_familia_ternura",
-      ref: "REF-17",
-      image: "catalogo/REF17_sagrada_familia_ternura.jpg",
-      fitContain: true,
-      gallery: [
-        { src: "catalogo/REF17_sagrada_familia_ternura.jpg", label: "🎨 Blanca" },
-        { src: "catalogo/ref_17.jpeg", label: "🎨 A Color" },
-      ],
-      modelOptions: [
-        "🥈✨ Sagrada Familia Ternura · Diseño Infantil",
-        "🥈✨ Sagrada Familia Ternura · Diseño Infantil (Color)",
-      ],
-      category: "blancas",
-      categoryLabel: "Sagrada Familia y Devoción",
-      tag: "🤍✨ Sagrada Familia · Estilo Ternura",
-      name: "Sagrada Familia Ternura · Diseño Infantil",
-      specs: "Vela escultórica · Diseño tierno",
-      desc: "Vela escultórica blanca de la Sagrada Familia (San José, la Virgen María y el Niño Jesús) con rasgos dulces y redondeados sobre base circular.",
-      price: 20000,
-      priceNote: "Pieza escultórica artesanal"
-    },
-    {
-      id: "ref18_maria_nino_medallon",
-      ref: "REF-18",
-      image: "catalogo/REF18_maria.jpg",
-      fitContain: true,
-      gallery: [
-        { src: "catalogo/REF18_maria.jpg", label: "🎨 Blanca" },
-        { src: "catalogo/ref_18.jpeg", label: "🎨 A Color" },
-      ],
-      modelOptions: [
-        "🥈✨ Sagrada Familia y Devoción",
-        "🥈✨ Sagrada Familia y Devoción (Color)",
-      ],
-      category: "blancas",
-      categoryLabel: "Sagrada Familia y Devoción",
-      tag: "🤍🙏 Virgen María & Niño Jesús",
-      name: "Vela Medallón Maternidad · Virgen María & Niño Jesús",
-      specs: "Vela en relieve · Ovalada",
-      desc: "Delicada vela blanca ovalada con relieve escultórico de la Virgen María abrazando con ternura al Niño Jesús.",
-      price: 15000,
-      priceNote: "Pieza escultórica artesanal"
-    },
-    {
-      id: "ref19_pina_navidena_organza",
-      ref: "REF-19",
-      image: "catalogo/REF19_pinas_colores.jpg",
-      fitContain: true,
-      gallery: [
-        { src: "catalogo/REF19_pinas_colores.jpg", label: "🎨 Ver los 3 tonos" },
-        { src: "catalogo/REF19_pina_bolsita.jpg", label: "🎁 En bolsita de organza" }
-      ],
-      modelOptions: [
-        "🥈✨ Plateada & Base Dorada",
-        "🤍 Blanca Marfil",
-        "✨🥈 Dorada & Base Plateada"
-      ],
-      category: "blancas",
-      categoryLabel: "Blancas, Doradas y Plateadas · 3 Tonos",
-      tag: "🌲✨ Piña Navideña · Con Bolsita",
-      name: "Piña de Pino Navideña Metalizada en Bolsita de Organza",
-      specs: "Unidad en bolsita · Elige entre 3 tonos",
-      desc: "Vela escultórica de piña navideña pintada a mano en 3 combinaciones (Plateada con base dorada, Blanca marfil o Dorada con base plateada), presentada en bolsita de organza blanca con cordón navideño y tarjeta Merry Christmas.",
-      price: 12000,
-      priceNote: "Incluye bolsita de organza"
-    },
-    {
-      id: "ref20_angel_corazon_estrella",
-      ref: "REF-20",
-      image: "catalogo/REF20_angel.jpg",
-      fitContain: true,
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "👼✨ Angelito · Alas & Estrella Dorada",
-      name: "Angelito de Luz con Alas Doradas y Corazón",
-      specs: "Vela escultórica · Detalles en oro",
-      desc: "Tierna vela escultórica de angelito blanco sosteniendo un corazón con estrella dorada en relieve y alas pintadas a mano en tono dorado perlado.",
-      price: 11000,
-      priceNote: "Valor por unidad"
-    },
-    {
-      id: "ref01_animalitos_colores",
-      ref: "REF-01",
-      image: "catalogo/CORREGIR_ref1_color.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "🌈 Velas de Colores · Animalitos",
-      name: "Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)",
-      specs: "Pack x10 velas · Colores surtidos",
-      desc: "Pack de 10 velas en tonos pastel surtidos con buenos deseos (Amor, Éxito, Perdón, Salud, Dinero, Dios, Paz, Abundancia, Gratitud, Viajes) y tiernos personajes navideños (Papá Noel, ardilla, perrito, pingüino, osito, búho, panda, erizo y zorrito).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref02_animalitos_blancas",
-      ref: "REF-02",
-      image: "catalogo/CORREGIR_ref2_blanco.jpg",
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "🕯️ Velas Blancas · Animalitos",
-      name: "Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)",
-      specs: "Pack x10 velas · Velas blancas",
-      desc: "Pack de 10 velas blancas con franja acuarela pastel, buenos deseos (Dinero, Gratitud, Amor, Salud, Paz, Abundancia, Dios, Éxito, Viajes, Perdón) y tiernos personajes navideños (osito, erizo, Papá Noel, pingüino, panda, búho, ardilla, zorrito y perrito).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref03_munecos_nieve_colores",
-      ref: "REF-03C",
-      image: "catalogo/CORREGIR_ref3_color.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "⛄🌈 Velas de Colores · Muñecos de Nieve",
-      name: "Velas de los Deseos · Muñecos de Nieve & Pinos (Colores)",
-      specs: "Pack x10 velas · Colores surtidos",
-      desc: "Pack de 10 velas en colores surtidos decoradas con muñecos de nieve con bufanda, pinos navideños, bastones de caramelo, esferas y muérdago junto a tus buenos deseos (Paz, Viajes, Dios, Salud, Éxito, Abundancia, Amor, Gratitud, Perdón, Dinero).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref03_munecos_nieve_blancas",
-      ref: "REF-03B",
-      image: "catalogo/CORREGIR_ref3_blanco.jpg",
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "⛄🕯️ Velas Blancas · Muñecos de Nieve",
-      name: "Velas de los Deseos · Muñecos de Nieve & Pinos (Blancas)",
-      specs: "Pack x10 velas · Velas blancas",
-      desc: "Pack de 10 velas blancas con franja rosa suave decoradas con muñecos de nieve con bufanda, pinos navideños, bastones de caramelo, esferas y muérdago junto a tus buenos deseos (Perdón, Viajes, Dinero, Dios, Amor, Abundancia, Paz, Éxito, Salud, Gratitud).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref30_duendes_amigos_colores",
-      ref: "REF-30C",
-      image: "catalogo/CORREGIR_ref30_color.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "🧝‍♂️🌈 Velas de Colores · Duendes & Amigos",
-      name: "Velas de los Deseos · Duendes & Amigos de Invierno (Colores)",
-      specs: "Pack x10 velas · Colores surtidos",
-      desc: "Pack de 10 velas en colores pastel surtidos decoradas con duendecitos, Papá Noel, muñeco de nieve, zorrito, pingüinos, oso polar y regalos junto a tus buenos deseos (Viajes, Gratitud, Abundancia, Perdón, Dios, Amor, Éxito, Salud, Dinero, Paz).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref30_duendes_amigos_blancas",
-      ref: "REF-30B",
-      image: "catalogo/CORREGIR_ref30_blanca.jpg",
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "🧝‍♂️🕯️ Velas Blancas · Duendes & Amigos",
-      name: "Velas de los Deseos · Duendes & Amigos de Invierno (Blancas)",
-      specs: "Pack x10 velas · Velas blancas",
-      desc: "Pack de 10 velas blancas con franja celeste y menta decoradas con duendecitos, Papá Noel, muñeco de nieve, zorrito, conejito, pingüinos, oso polar y reno junto a tus buenos deseos (Abundancia, Viajes, Gratitud, Amor, Perdón, Éxito, Dinero, Salud, Paz, Dios).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref31_santa_duendes_colores",
-      ref: "REF-31C",
-      image: "catalogo/CORREGIR_ref31_color.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "🎅🌈 Velas de Colores · Santa & Duendes",
-      name: "Velas de los Deseos · Papá Noel, Duendes & Renos (Colores)",
-      specs: "Pack x10 velas · Colores surtidos",
-      desc: "Pack de 10 velas de colores surtidos con franjas vibrantes, decoradas con Papá Noel, duendes navideños, renos, muñecos de nieve, pinos, estrellas y regalos junto a tus buenos deseos (Viajes, Gratitud, Abundancia, Dios, Paz, Dinero, Amor, Éxito, Perdón, Salud).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref31_santa_duendes_blancas",
-      ref: "REF-31B",
-      image: "catalogo/CORREGIR_ref31_blanca.jpg",
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "🎅🕯️ Velas Blancas · Santa & Duendes",
-      name: "Velas de los Deseos · Papá Noel, Duendes & Renos (Blancas)",
-      specs: "Pack x10 velas · Velas blancas",
-      desc: "Pack de 10 velas blancas con franjas de color vibrante, decoradas con Papá Noel, duendes navideños, renos, muñecos de nieve, pinos, estrellas y regalos junto a tus buenos deseos (Amor, Éxito, Dinero, Dios, Abundancia, Gratitud, Salud, Paz, Perdón, Viajes).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref32_santa_chimenea_colores",
-      ref: "REF-32C",
-      image: "catalogo/CORREGIR_ref32_color.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "🎄🌈 Velas de Colores · Franja Verde",
-      name: "Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Colores)",
-      specs: "Pack x10 velas · Colores surtidos",
-      desc: "Pack de 10 velas de colores surtidos con franja verde navideña, decoradas con Papá Noel en la chimenea, campanas, estrellas y regalos junto a tus buenos deseos (Salud, Paz, Dinero, Éxito, Viajes, Abundancia, Perdón, Dios, Amor, Gratitud).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref32_santa_chimenea_blancas",
-      ref: "REF-32B",
-      image: "catalogo/CORREGIR_ref32_blanca.jpg",
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "🎄🕯️ Velas Blancas · Franja Verde",
-      name: "Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Blancas)",
-      specs: "Pack x10 velas · Velas blancas",
-      desc: "Pack de 10 velas blancas con franja verde navideña, decoradas con Papá Noel en la chimenea, campanas, estrellas y regalos junto a tus buenos deseos (Dios, Paz, Abundancia, Gratitud, Viajes, Éxito, Dinero, Perdón, Salud, Amor).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref33_pesebre_reyes_colores",
-      ref: "REF-33C",
-      image: "catalogo/CORREGIR_ref33_color.jpg",
-      category: "colores",
-      categoryLabel: "Velas de Colores",
-      tag: "🌟🌈 Velas de Colores · Pesebre & Reyes",
-      name: "Velas de los Deseos · Pesebre & Reyes Magos Infantil (Colores)",
-      specs: "Pack x10 velas · Colores surtidos",
-      desc: "Pack de 10 velas en colores surtidos decoradas con el Pesebre navideño infantil (Niño Jesús, Virgen María, San José, los Tres Reyes Magos, burritos y vaquitas) junto a tus buenos deseos (Abundancia, Viajes, Dios, Gratitud, Paz, Salud, Éxito, Dinero, Perdón, Amor).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    },
-    {
-      id: "ref33_pesebre_reyes_blancas",
-      ref: "REF-33B",
-      image: "catalogo/CORREGIR_ref33_blanca.jpg",
-      category: "blancas",
-      categoryLabel: "Blancas y Doradas",
-      tag: "🌟🕯️ Velas Blancas · Pesebre & Reyes",
-      name: "Velas de los Deseos · Pesebre & Reyes Magos Infantil (Blancas)",
-      specs: "Pack x10 velas · Velas blancas",
-      desc: "Pack de 10 velas blancas en tonos tierra y dorado suave decoradas con el Pesebre navideño infantil (Niño Jesús, Virgen María, San José, los Tres Reyes Magos, burritos y vaquitas) junto a tus buenos deseos (Viajes, Gratitud, Abundancia, Paz, Dios, Dinero, Amor, Perdón, Éxito, Salud).",
-      price: 20000,
-      priceNote: "Pack x10 velas"
-    }
-  ];
+  {
+    "id": "combo01_caja_deseos_estrellas",
+    "ref": "COMBO-01",
+    "image": "catalogo/COMBO1_abierta.jpg",
+    "imageBox": "catalogo/COMBO1_caja.jpg",
+    "category": "combos",
+    "categoryLabel": "Combos y Cajas de Regalo",
+    "tag": "🎁 Caja Regalo · 5 Velas + Estrellas",
+    "name": "Combo Caja de los Deseos · Estrellas Doradas",
+    "specs": "Caja x5 velas · Con visor y tarjeta",
+    "desc": "5 velas blancas personalizadas con motivos navideños y estrella dorada en la parte superior (ej: Familia, Sueños, Gratitud, Salud, Calma) en caja de regalo con ventana y etiqueta Merry Christmas.",
+    "price": 12000,
+    "priceNote": "Caja lista para regalar"
+  },
+  {
+    "id": "combo02_figuras_navidenas_x7",
+    "ref": "COMBO-02",
+    "image": "catalogo/COMBO2_abierta.jpg",
+    "imageBox": "catalogo/COMBO2_caja.jpg",
+    "category": "combos",
+    "categoryLabel": "Combos y Cajas de Regalo",
+    "tag": "🎁 Caja Regalo · 7 Mini Figuras",
+    "name": "Combo Mini Figuras Navideñas Escultóricas (x7)",
+    "specs": "Caja x7 velitas · Figuras surtidas",
+    "desc": "7 velitas artesanales en cera blanca y detalles navideños: hombre de nieve, árbol de Navidad, reno, regalo, bota, copo y galleta de jengibre, en caja transparente con lazo dorado.",
+    "price": 15000,
+    "priceNote": "Caja lista para regalar"
+  },
+  {
+    "id": "combo03_duo_muneco_pino",
+    "ref": "COMBO-03",
+    "image": "catalogo/COMBO3_abierta.jpg",
+    "imageBox": "catalogo/COMBO3_caja.jpg",
+    "category": "combos",
+    "categoryLabel": "Combos y Cajas de Regalo",
+    "tag": "🎁 Caja Dúo · Muñeco & Pino",
+    "name": "Combo Dúo Invierno · Muñeco de Nieve y Pino",
+    "specs": "Caja x2 figuras · Con lazo y viruta",
+    "desc": "Muñeco de nieve con sombrero de copa y bufanda vino tinto junto a un pino navideño verde con detalles nevados, sobre cama de viruta en caja de regalo con lazo satinado.",
+    "price": 25000,
+    "priceNote": "Caja lista para regalar"
+  },
+  {
+    "id": "combo04_trio_reno_jengibre_pino",
+    "ref": "COMBO-04",
+    "image": "catalogo/COMBO4_abierta.jpg",
+    "imageBox": "catalogo/COMBO4_caja.jpg",
+    "category": "combos",
+    "categoryLabel": "Combos y Cajas de Regalo",
+    "tag": "🎁 Caja Trío · Reno con Cascabel",
+    "name": "Combo Trío Navideño · Reno, Jengibre y Pino",
+    "specs": "Caja x3 figuras · Con lazo y viruta",
+    "desc": "Reno dulce con cascabel dorado en cuello, galleta de jengibre con moño navideño y pino de Navidad verde en caja de regalo con ventana y lazo satinado.",
+    "price": 30000,
+    "priceNote": "Caja lista para regalar"
+  },
+  {
+    "id": "combo05_trio_jengibre_pino_estrella",
+    "ref": "COMBO-05",
+    "image": "catalogo/COMBO5_estrella.jpg",
+    "imageBox": "catalogo/COMBO5_caja.jpg",
+    "category": "combos",
+    "categoryLabel": "Combos y Cajas de Regalo",
+    "tag": "🎁 Caja Trío · Jengibre, Pino & Estrella",
+    "name": "Combo Trío Navideño · Jengibre, Pino & Copo Estrella",
+    "specs": "Caja x3 figuras · Con lazo y viruta",
+    "desc": "Galleta de jengibre con detalles dorados y botones plateados, pino navideño blanco con estrella dorada y luces de colores, y copo estrella escarchado con cascabel en caja de regalo.",
+    "price": 30000,
+    "priceNote": "Caja lista para regalar"
+  },
+  {
+    "id": "combo06_trio_estrellas_escarchadas",
+    "ref": "COMBO-06",
+    "image": "catalogo/COMBO6_estrellas_colores.jpg",
+    "imageBox": "catalogo/COMBO6_estrellas_doradas.jpg",
+    "category": "combos",
+    "categoryLabel": "Combos y Cajas de Regalo",
+    "tag": "❄️✨ Caja x3 Copos Estrella · 2 Modelos",
+    "name": "Combo Trío Copos Estrella Navideños Escarchados",
+    "specs": "Caja x3 velas · Colores pasteles o blanco/dorado",
+    "desc": "Trío de velas escultóricas en forma de copo / flor de estrella con acabado escarchado y cascabel metálico central con lazo de yute. Disponible en tonos pastel (menta, lila y verde oliva) o en blanco marfil con filo dorado.",
+    "price": 20000,
+    "priceNote": "Caja x3 con ventana",
+    "btnSwitchToAlt": "👁️ Ver versión Blanca con Dorado",
+    "modelOptions": [
+      "Tonos Pastel Escarchados",
+      "Blanco Marfil con Filo Dorado"
+    ]
+  },
+  {
+    "id": "ref11_arbolitos_navidenos",
+    "ref": "REF-11",
+    "image": "catalogo/REF11_arbolitos.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "🌲 Pino Escultórico · 4 Tonos",
+    "name": "Pinos Navideños Escultóricos Pintados a Mano",
+    "specs": "Vela individual · 4 opciones de color",
+    "desc": "Pinos en espiral con técnica degradé artesanal: verde bosque, blanco nevado, rosa pastel y lavanda suave con toques escarchados.",
+    "price": 11000,
+    "priceNote": "Precio por unidad",
+    "modelOptions": [
+      "Verde Bosque Tradicional",
+      "Blanco Nevado",
+      "Rosa Pastel Escarchado",
+      "Lavanda Suave"
+    ]
+  },
+  {
+    "id": "ref12_cirio_artesanal_cruz",
+    "ref": "REF-12",
+    "image": "catalogo/REF12_cirio.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "✨ Cirio Artesanal · Cruz Dorada",
+    "name": "Cirio Decorado Artesanal · Cruz & Espigas Doradas",
+    "specs": "Cirio grande de devoción · Acabado dorado",
+    "desc": "Cirio ceremonial blanco marfil elaborado a mano, decorado con cruz dorada calada, espigas de trigo doradas en relieve y detalles botánicos para altar, bendición del hogar o regalo espiritual.",
+    "price": 40000,
+    "priceNote": "Vela grande ceremonial"
+  },
+  {
+    "id": "ref13_arbol_casita_navidena",
+    "ref": "REF-13",
+    "image": "catalogo/ARB_1.jpg",
+    "imageBox": "catalogo/ARB_2.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "🏠🎄 Árbol Casita · Con Estuche",
+    "name": "Árbol Casita Navideña Escultórico con Cascabel & Estuche",
+    "specs": "Vela individual en acetato · 3 colores disponibles",
+    "desc": "Vela en forma de pino estilizado con casita rústica calada en su base, acabado en relieve y cordel rústico con cascabel dorado metálico. Viene empacada en estuche individual de acetato transparente con base de cartón rígido listo para obsequio.",
+    "price": 20000,
+    "priceNote": "En estuche de acetato transparente",
+    "btnSwitchToAlt": "👁️ Ver en estuche para regalo",
+    "modelOptions": [
+      "Verde Pino Navideño",
+      "Blanco Nevado Marfil",
+      "Rosa Suave Pastel"
+    ]
+  },
+  {
+    "id": "ref14_virgencitas_filo_dorado",
+    "ref": "REF-14",
+    "image": "catalogo/REF14_virgenes.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "🙏✨ Virgencita Dulce · 3 Tonos",
+    "name": "Virgencita Dulce con Filo Dorado Pintado a Mano",
+    "specs": "Vela individual · 3 tonos disponibles",
+    "desc": "Diseño tierno y estilizado de la Virgen María con aureola dorada, manos unidas en oración y manto decorado con fino filete dorado pintado a mano. Disponible en blanco puro, azul sereno o rosa blush.",
+    "price": 10000,
+    "priceNote": "Precio por unidad",
+    "modelOptions": [
+      "Blanca con Manto Dorado",
+      "Azul Sereno Suave",
+      "Rosa Blush Suave"
+    ]
+  },
+  {
+    "id": "ref15_tren_infantil_osito",
+    "ref": "REF-15",
+    "image": "catalogo/REF15_tren.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "🚂🧸 Tren Escultórico · Osito & Casita",
+    "name": "Vela Escultórica Tren de los Sueños · Osito, Casita & Auto",
+    "specs": "Vela escultórica grande · Doble pabilo",
+    "desc": "Diseño escultórico infantil en tono marfil con tierno osito maquinista, casita de cuento y auto de juguete. Cuenta con dos pabilos para encendido uniforme y base decorada con esferas navideñas.",
+    "price": 16000,
+    "priceNote": "Vela escultórica doble pabilo"
+  },
+  {
+    "id": "ref16_sagrada_familia_rosas",
+    "ref": "REF-16",
+    "image": "catalogo/REF16_sagrada_familia_rosas.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "🤍🌹 Sagrada Familia · Base de Rosas",
+    "name": "Sagrada Familia Clásica sobre Base de Rosas",
+    "specs": "Vela de devoción · Acabado satinado marfil",
+    "desc": "Escultura en cera marfil de San José, la Virgen María y el Niño Jesús en brazos sobre una base tallada de rosas con detalles en oro viejo suave. Ideal para bendición del hogar, nochebuena y altares navideños.",
+    "price": 22000,
+    "priceNote": "Vela escultórica devocional"
+  },
+  {
+    "id": "ref40_chozas",
+    "ref": "REF-40",
+    "image": "catalogo/ref_40_nacimiento.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "🤍🌹 Nacimiento de Belén",
+    "name": "Nacimiento de Belén",
+    "specs": "Vela de devoción · Acabado satinado marfil",
+    "desc": "Escultura en cera marfil de San José, la Virgen María y el Niño Jesús en brazos en la choza. Ideal para bendición del hogar, nochebuena y altares navideños.",
+    "price": 15000,
+    "priceNote": "Vela escultórica devocional"
+  },
+  {
+    "id": "ref17_sagrada_familia_ternura",
+    "ref": "REF-17",
+    "image": "catalogo/REF17_sagrada_familia_ternura.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "🤍✨ Sagrada Familia · Estilo Ternura",
+    "name": "Sagrada Familia Ternura · Diseño Infantil",
+    "specs": "Vela de devoción · Acabado marfil satinado",
+    "desc": "Tierno diseño de San José y la Virgen María con rasgos caricaturizados y dulces abrazando al Niño Jesús, sobre base de rosas y estrellas en relieve.",
+    "price": 20000,
+    "priceNote": "Vela escultórica de devoción"
+  },
+  {
+    "id": "ref18_maria_nino_medallon",
+    "ref": "REF-18",
+    "image": "catalogo/REF18_maria.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "🤍🙏 Virgen María & Niño Jesús",
+    "name": "Vela Medallón Maternidad · Virgen María & Niño Jesús",
+    "specs": "Vela ovalada de devoción · Filo dorado",
+    "desc": "Relieve ovalado con la Virgen María sosteniendo con ternura al Niño Jesús, marco decorativo con filo oro rosa y detalles esculpidos en cera marfil.",
+    "price": 15000,
+    "priceNote": "Vela escultórica devocional"
+  },
+  {
+    "id": "ref19_pina_navidena_organza",
+    "ref": "REF-19",
+    "image": "catalogo/REF19_pinas_colores.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "🌲✨ Piña Navideña · Con Bolsita",
+    "name": "Piña de Pino Navideña Metalizada en Bolsita de Organza",
+    "specs": "Vela individual · Empacada en organza",
+    "desc": "Piña de pino tallada con escamas en relieve y acabado metalizado brillante (disponible en dorado champaña, verde esmeralda y oro cálido). Viene presentada en bolsita de organza con lazo satinado, lista para entregar como detalle o recuerdo navideño.",
+    "price": 12000,
+    "priceNote": "Empacada en bolsita de organza",
+    "modelOptions": [
+      "Dorado Champaña Metalizado",
+      "Verde Esmeralda Metalizado",
+      "Oro Cálido Metalizado"
+    ]
+  },
+  {
+    "id": "ref20_angel_corazon_estrella",
+    "ref": "REF-20",
+    "image": "catalogo/REF20_angel.jpg",
+    "category": "moldes",
+    "categoryLabel": "Velas de Molde",
+    "tag": "👼✨ Angelito · Alas & Estrella Dorada",
+    "name": "Angelito de Luz con Alas Doradas y Corazón",
+    "specs": "Vela individual · Detalles pintados a mano",
+    "desc": "Tierno angelito con túnica marfil, cabellito rizado, alas doradas texturizadas y estrella o corazón en el pecho pintado a mano en dorado metalizado. Detalle ideal para bautizos, comuniones, novenas y regalo familiar.",
+    "price": 11000,
+    "priceNote": "Precio por unidad",
+    "modelOptions": [
+      "Angelito con Estrella Dorada",
+      "Angelito con Corazón Dorado"
+    ]
+  },
+  {
+    "id": "ref25_farol_colores",
+    "ref": "REF-25",
+    "image": "catalogo/FAROL_1_colores.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas Farol",
+    "tag": "🏮 Velas Farol · Colores",
+    "name": "Velas para Farol · Deseos & Símbolos (Colores)",
+    "specs": "Pack x10 velas · Letra blanca",
+    "desc": "Pack de 10 velas de colores vivos ideales para farolitos, decoradas con deseos y símbolos navideños en blanco (Alegría, Gratitud, Fortuna, Amor, Dios, Paz, Salud, Perdón, Familia, Trabajo).",
+    "price": 15000,
+    "priceNote": "Pack x10 velas para farol"
+  },
+  {
+    "id": "ref96_farol_colores",
+    "ref": "REF-96",
+    "image": "catalogo/FAROL_3_color.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas Farol",
+    "tag": "🏮 Velas Farol · Colores",
+    "name": "Velas para Farol · Deseos & Símbolos (Colores)",
+    "specs": "Pack x10 velas · Letra blanca",
+    "desc": "Pack de 10 velas de colores vivos ideales para farolitos, decoradas con deseos y símbolos navideños en blanco (Alegría, Gratitud, Fortuna, Amor, Dios, Paz, Salud, Perdón, Familia, Trabajo).",
+    "price": 15000,
+    "priceNote": "Pack x10 velas para farol"
+  },
+  {
+    "id": "ref26_farol_blancas",
+    "ref": "REF-26",
+    "image": "catalogo/FAROL_2_blancas.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas Farol",
+    "tag": "🏮 Velas Farol · Blancas con Dorado",
+    "name": "Velas para Farol · Deseos & Símbolos (Blancas con Dorado)",
+    "specs": "Pack x10 velas · Letra dorada",
+    "desc": "Pack de 10 velas blancas ideales para farolitos, decoradas con deseos y símbolos navideños en dorado metalizado (Alegría, Fortuna, Salud, Familia, Gratitud, Dios, Amor, Trabajo, Perdón, Paz).",
+    "price": 15000,
+    "priceNote": "Pack x10 velas para farol"
+  },
+  {
+    "id": "ref08_deseos_letras_metalizadas",
+    "ref": "REF-08",
+    "image": "catalogo/REF8_dorada.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas Farol",
+    "tag": "🏮 Velas Farol · Blancas con Dorado",
+    "name": "Velas para Farol · Caligrafía & Símbolos (Dorado)",
+    "specs": "Pack x10 velas · Acabado dorado",
+    "desc": "Velas blancas elegantes para farol con deseos en caligrafía dorada metalizada e íconos navideños en dorado (estrella, pino, trébol, ángel, corazón).",
+    "price": 15000,
+    "priceNote": "Pack x10 velas para farol"
+  },
+  {
+    "id": "ref22_deseos_letras_multicolor",
+    "ref": "REF-22",
+    "image": "catalogo/REF8_multicolor.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas Farol",
+    "tag": "🏮 Velas Farol · Multicolor",
+    "name": "Velas para Farol · Caligrafía & Símbolos (Multicolor)",
+    "specs": "Pack x10 velas · Letras multicolor",
+    "desc": "Velas blancas para farol con deseos en caligrafía metalizada multicolor e íconos navideños de colores (reno, pino, esfera, corazón, manopla, campana, trébol).",
+    "price": 15000,
+    "priceNote": "Pack x10 velas para farol"
+  },
+  {
+    "id": "ref01_animalitos_colores",
+    "ref": "REF-01",
+    "image": "catalogo/CORREGIR_ref1_color.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Animalitos Colores",
+    "name": "Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)",
+    "specs": "Pack x10 velas · Colores surtidos",
+    "desc": "Pack de 10 velas en tonos pastel surtidos con buenos deseos (Amor, Éxito, Perdón, Salud, Dinero, Dios, Paz, Abundancia, Gratitud, Viajes) y tiernos personajes navideños (Papá Noel, ardilla, perrito, pingüino, osito, búho, panda, erizo y zorrito).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref02_animalitos_blancas",
+    "ref": "REF-02",
+    "image": "catalogo/CORREGIR_ref2_blanco.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Animalitos Blancas",
+    "name": "Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)",
+    "specs": "Pack x10 velas · Velas blancas",
+    "desc": "Pack de 10 velas blancas con franja acuarela pastel, buenos deseos (Dinero, Gratitud, Amor, Salud, Paz, Abundancia, Dios, Éxito, Viajes, Perdón) y tiernos personajes navideños (osito, erizo, Papá Noel, pingüino, panda, búho, ardilla, zorrito y perrito).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref97_animalitos_colores",
+    "ref": "REF-97",
+    "image": "catalogo/REF97_color.png",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Animalitos Colores",
+    "name": "Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)",
+    "specs": "Pack x10 velas · Colores surtidos",
+    "desc": "Pack de 10 velas en tonos pastel surtidos con buenos deseos (Amor, Éxito, Perdón, Salud, Dinero, Dios, Paz, Abundancia, Gratitud, Viajes) y tiernos personajes navideños (Papá Noel, ardilla, perrito, pingüino, osito, búho, panda, erizo y zorrito).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref97_animalitos_blanco",
+    "ref": "REF-97",
+    "image": "catalogo/REF97_blanco.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Animalitos Blancas",
+    "name": "Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)",
+    "specs": "Pack x10 velas · Velas blancas",
+    "desc": "Pack de 10 velas blancas con franja acuarela pastel, buenos deseos (Amor, Éxito, Perdón, Salud, Dinero, Dios, Paz, Abundancia, Gratitud, Viajes) y tiernos personajes navideños (Papá Noel, ardilla, perrito, pingüino, osito, búho, panda, erizo y zorrito).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref98_animalitos_colores",
+    "ref": "REF-98",
+    "image": "catalogo/Ref98_color.jpeg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Animalitos Colores",
+    "name": "Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)",
+    "specs": "Pack x10 velas · Colores surtidos",
+    "desc": "Pack de 10 velas en tonos pastel surtidos con buenos deseos (Amor, Éxito, Perdón, Salud, Dinero, Dios, Paz, Abundancia, Gratitud, Viajes) y tiernos personajes navideños (Papá Noel, ardilla, perrito, pingüino, osito, búho, panda, erizo y zorrito).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref98_animalitos_blanco",
+    "ref": "REF-98",
+    "image": "catalogo/Ref98_Blanco.jpeg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Animalitos Blancas",
+    "name": "Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)",
+    "specs": "Pack x10 velas · Velas blancas",
+    "desc": "Pack de 10 velas blancas con franja acuarela pastel, buenos deseos (Amor, Éxito, Perdón, Salud, Dinero, Dios, Paz, Abundancia, Gratitud, Viajes) y tiernos personajes navideños (Papá Noel, ardilla, perrito, pingüino, osito, búho, panda, erizo y zorrito).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref03_munecos_nieve_colores",
+    "ref": "REF-03C",
+    "image": "catalogo/CORREGIR_ref3_color.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Muñecos de Nieve Colores",
+    "name": "Velas de los Deseos · Muñecos de Nieve & Pinos (Colores)",
+    "specs": "Pack x10 velas · Colores surtidos",
+    "desc": "Pack de 10 velas en colores surtidos decoradas con muñecos de nieve con bufanda, pinos navideños, bastones de caramelo, esferas y muérdago junto a tus buenos deseos (Paz, Viajes, Dios, Salud, Éxito, Abundancia, Amor, Gratitud, Perdón, Dinero).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref03_munecos_nieve_blancas",
+    "ref": "REF-03B",
+    "image": "catalogo/CORREGIR_ref3_blanco.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Muñecos de Nieve Blancas",
+    "name": "Velas de los Deseos · Muñecos de Nieve & Pinos (Blancas)",
+    "specs": "Pack x10 velas · Velas blancas",
+    "desc": "Pack de 10 velas blancas con franja rosa suave decoradas con muñecos de nieve con bufanda, pinos navideños, bastones de caramelo, esferas y muérdago junto a tus buenos deseos (Perdón, Viajes, Dinero, Dios, Amor, Abundancia, Paz, Éxito, Salud, Gratitud).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref30_duendes_amigos_colores",
+    "ref": "REF-30C",
+    "image": "catalogo/CORREGIR_ref30_color.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Duendes & Amigos Colores",
+    "name": "Velas de los Deseos · Duendes & Amigos de Invierno (Colores)",
+    "specs": "Pack x10 velas · Colores surtidos",
+    "desc": "Pack de 10 velas en colores pastel surtidos decoradas con duendecitos, Papá Noel, muñeco de nieve, zorrito, pingüinos, oso polar y regalos junto a tus buenos deseos (Viajes, Gratitud, Abundancia, Perdón, Dios, Amor, Éxito, Salud, Dinero, Paz).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref30_duendes_amigos_blancas",
+    "ref": "REF-30B",
+    "image": "catalogo/CORREGIR_ref30_blanca.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Duendes & Amigos Blancas",
+    "name": "Velas de los Deseos · Duendes & Amigos de Invierno (Blancas)",
+    "specs": "Pack x10 velas · Velas blancas",
+    "desc": "Pack de 10 velas blancas con franja celeste y menta decoradas con duendecitos, Papá Noel, muñeco de nieve, zorrito, conejito, pingüinos, oso polar y reno junto a tus buenos deseos (Abundancia, Viajes, Gratitud, Amor, Perdón, Éxito, Dinero, Salud, Paz, Dios).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref31_santa_duendes_colores",
+    "ref": "REF-31C",
+    "image": "catalogo/CORREGIR_ref31_color.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Santa & Duendes Colores",
+    "name": "Velas de los Deseos · Papá Noel, Duendes & Renos (Colores)",
+    "specs": "Pack x10 velas · Colores surtidos",
+    "desc": "Pack de 10 velas de colores surtidos con franjas vibrantes, decoradas con Papá Noel, duendes navideños, renos, muñecos de nieve, pinos, estrellas y regalos junto a tus buenos deseos (Viajes, Gratitud, Abundancia, Dios, Paz, Dinero, Amor, Éxito, Perdón, Salud).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref31_santa_duendes_blancas",
+    "ref": "REF-31B",
+    "image": "catalogo/CORREGIR_ref31_blanca.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Santa & Duendes Blancas",
+    "name": "Velas de los Deseos · Papá Noel, Duendes & Renos (Blancas)",
+    "specs": "Pack x10 velas · Velas blancas",
+    "desc": "Pack de 10 velas blancas con franjas de color vibrante, decoradas con Papá Noel, duendes navideños, renos, muñecos de nieve, pinos, estrellas y regalos junto a tus buenos deseos (Amor, Éxito, Dinero, Dios, Abundancia, Gratitud, Salud, Paz, Perdón, Viajes).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref32_santa_chimenea_colores",
+    "ref": "REF-32C",
+    "image": "catalogo/CORREGIR_ref32_color.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Franja Verde Colores",
+    "name": "Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Colores)",
+    "specs": "Pack x10 velas · Colores surtidos",
+    "desc": "Pack de 10 velas de colores surtidos con franja verde navideña, decoradas con Papá Noel en la chimenea, campanas, estrellas y regalos junto a tus buenos deseos (Salud, Paz, Dinero, Éxito, Viajes, Abundancia, Perdón, Dios, Amor, Gratitud).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref32_santa_chimenea_blancas",
+    "ref": "REF-32B",
+    "image": "catalogo/CORREGIR_ref32_blanca.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Franja Verde Blancas",
+    "name": "Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Blancas)",
+    "specs": "Pack x10 velas · Velas blancas",
+    "desc": "Pack de 10 velas blancas con franja verde navideña, decoradas con Papá Noel en la chimenea, campanas, estrellas y regalos junto a tus buenos deseos (Dios, Paz, Abundancia, Gratitud, Viajes, Éxito, Dinero, Perdón, Salud, Amor).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref33_pesebre_reyes_colores",
+    "ref": "REF-33C",
+    "image": "catalogo/CORREGIR_ref33_color.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Pesebre & Reyes Colores",
+    "name": "Velas de los Deseos · Pesebre & Reyes Magos Infantil (Colores)",
+    "specs": "Pack x10 velas · Colores surtidos",
+    "desc": "Pack de 10 velas en colores surtidos decoradas con el Pesebre navideño infantil (Niño Jesús, Virgen María, San José, los Tres Reyes Magos, burritos y vaquitas) junto a tus buenos deseos (Abundancia, Viajes, Dios, Gratitud, Paz, Salud, Éxito, Dinero, Perdón, Amor).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref33_pesebre_reyes_blancas",
+    "ref": "REF-33B",
+    "image": "catalogo/CORREGIR_ref33_blanca.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas",
+    "tag": "🕯️ Velas · Pesebre & Reyes Blancas",
+    "name": "Velas de los Deseos · Pesebre & Reyes Magos Infantil (Blancas)",
+    "specs": "Pack x10 velas · Velas blancas",
+    "desc": "Pack de 10 velas blancas en tonos tierra y dorado suave decoradas con el Pesebre navideño infantil (Niño Jesús, Virgen María, San José, los Tres Reyes Magos, burritos y vaquitas) junto a tus buenos deseos (Viajes, Gratitud, Abundancia, Paz, Dios, Dinero, Amor, Perdón, Éxito, Salud).",
+    "price": 20000,
+    "priceNote": "Pack x10 velas"
+  },
+  {
+    "id": "ref10_caligrafia_clasica_dual",
+    "ref": "REF-10",
+    "image": "catalogo/REF10_colores.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas Yumbo",
+    "tag": "✨ Velas Yumbo · Colores",
+    "name": "Velas Yumbo de los Deseos · Caligrafía Clásica (Colores)",
+    "specs": "Pack x10 velas · Letra plateada",
+    "desc": "Velas en colores vibrantes surtidos con buenos deseos en letra cursiva plateada (Amor, Dinero, Perdón, Trabajo, Paz, Dios, Abundancia, Gratitud, Éxito, Salud).",
+    "price": 25000,
+    "priceNote": "Pack x10 velas Yumbo"
+  },
+  {
+    "id": "ref24_caligrafia_clasica_blanca",
+    "ref": "REF-24",
+    "image": "catalogo/REF10_blanca.jpg",
+    "category": "velas",
+    "categoryLabel": "Velas Yumbo",
+    "tag": "✨ Velas Yumbo · Blancas con Dorado",
+    "name": "Velas Yumbo de los Deseos · Caligrafía Clásica (Blancas con Dorado)",
+    "specs": "Pack x10 velas · Letras doradas",
+    "desc": "Diseño clásico y elegante en velas blancas con tus buenos deseos en letra cursiva dorada metalizada (Amor, Dinero, Perdón, Gratitud, Paz, Dios, Abundancia, Salud, Éxito, Viajes).",
+    "price": 25000,
+    "priceNote": "Pack x10 velas Yumbo"
+  }
+];
 
   // Mapa rápido por ID
   const PRODUCTS_BY_ID = {};
@@ -3122,8 +3110,8 @@
     });
 
     // 3. Ahora que "total" sí existe y está calculado, evalúa el envío gratis y muestra el total
-    const envioGratis = total >= 50000;
-    const faltaParaGratis = 50000 - total;
+    const envioGratis = total >= 60000;
+    const faltaParaGratis = 60000 - total;
 
     recapTotal.innerHTML = `
       <div style="margin-top:12px; margin-bottom:10px; padding:10px 14px; border-radius:10px; font-size:0.82rem; font-weight:700; display:flex; align-items:center; gap:8px; ${envioGratis ? 'background:rgba(175,193,178,.35); color:var(--cacao-deep); border:1px solid var(--pistachio);' : 'background:rgba(217,183,125,.2); color:var(--cacao); border:1px dashed var(--champagne);'}">
