@@ -12,7 +12,7 @@
       color: #2c1e16;
       padding: 24px;
     }
-    .container { max-width: 1050px; margin: 0 auto; background: #fff; padding: 28px; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+    .container { max-width: 1080px; margin: 0 auto; background: #fff; padding: 28px; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
     .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ecd9c6; padding-bottom: 16px; margin-bottom: 24px; }
     .header h1 { font-size: 1.5rem; color: #5c3a21; }
     .header p { font-size: 0.9rem; color: #7a6252; margin-top: 4px; }
@@ -21,15 +21,22 @@
       border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.9rem;
     }
     .print-btn:hover { background: #3f2614; }
-    h2 { font-size: 1.15rem; color: #5c3a21; margin: 22px 0 10px; padding: 8px 12px; background: #fbf2e8; border-left: 4px solid #c89b57; border-radius: 6px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 18px; }
+    h2 { font-size: 1.15rem; color: #5c3a21; margin: 24px 0 10px; padding: 10px 14px; background: #fbf2e8; border-left: 4px solid #c89b57; border-radius: 6px; }
+    h3 { font-size: 1.02rem; color: #7b3f11; margin: 16px 0 8px; padding-left: 8px; border-left: 3px solid #e0b070; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 22px; }
     th, td { border: 1px solid #eadccf; padding: 10px 12px; text-align: left; vertical-align: middle; }
     th { background: #f6ebe0; color: #4a2f1b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
-    td.ref { font-weight: 800; color: #7b3f11; white-space: nowrap; width: 110px; font-size: 0.95rem; }
-    td.price { font-weight: 800; color: #196b38; white-space: nowrap; width: 110px; text-align: right; font-size: 1rem; }
-    td.img-cell { width: 150px; text-align: center; background: #faf6f2; }
-    td.img-cell img { width: 130px; height: 92px; object-fit: contain; border-radius: 8px; border: 1px solid #e6d7c8; background: #fff; }
+    td.ref { font-weight: 800; color: #7b3f11; white-space: nowrap; width: 105px; font-size: 0.95rem; }
+    td.price { font-weight: 800; color: #196b38; white-space: nowrap; width: 105px; text-align: right; font-size: 1rem; }
+    td.img-cell { width: 180px; text-align: center; background: #faf6f2; }
+    td.img-cell img { width: 120px; height: 86px; object-fit: contain; border-radius: 8px; border: 1px solid #e6d7c8; background: #fff; }
+    .dual-thumb-wrap { display: flex; gap: 6px; justify-content: center; align-items: flex-end; }
+    .thumb-box { display: flex; flex-direction: column; align-items: center; }
+    .thumb-box img { width: 80px; height: 75px; object-fit: contain; }
+    .thumb-lbl { font-size: 0.68rem; color: #7a6252; margin-top: 2px; max-width: 82px; text-align: center; line-height: 1.1; font-weight: 600; }
     .sub { display: block; font-size: 0.8rem; color: #7a6252; margin-top: 3px; }
+    .opt-tags { display: block; margin-top: 5px; }
+    .opt-badge { display: inline-block; font-size: 0.72rem; padding: 1px 7px; border-radius: 4px; background: #f2e6d9; color: #5c3a21; margin-right: 4px; font-weight: 600; }
     @media print {
       body { background: #fff; padding: 0; }
       .container { box-shadow: none; padding: 0; }
@@ -43,250 +50,551 @@
     <div class="header">
       <div>
         <h1>🕯️ MERAKI · Tabla Oficial de Referencias para Vendedores</h1>
-        <p>Total: 34 referencias activas · Velas de los deseos ilustradas unificadas a $20.000</p>
+        <p>Total: 40 referencias activas · Organizadas en Combos, Moldes (con versiones Blancas y Pintadas) y Velas ($15.000 Farol, $20.000 Velas, $25.000 Yumbo)</p>
       </div>
       <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
     </div>
 
+    <!-- 1. COMBOS -->
     <h2>🎁 1. Combos y Cajas de Regalo (6 Referencias)</h2>
     <table>
       <thead>
-        <tr><th>Ref</th><th>Nombre del Producto</th><th>Precio</th><th>Imagen</th></tr>
+        <tr>
+          <th>Ref</th>
+          <th>Nombre & Descripción</th>
+          <th>Precio</th>
+          <th>Imagen (Abierta / Caja)</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
           <td class="ref">COMBO-01</td>
-          <td><strong>Combo Caja de los Deseos · Estrellas Doradas</strong><span class="sub">Caja x5 velas con visor y tarjeta</span></td>
+          <td>
+            <strong>Combo Caja de los Deseos · Estrellas Doradas</strong>
+            <span class="sub">Caja x5 velas · Con visor y tarjeta · 🎁 Caja Regalo · 5 Velas + Estrellas</span>
+            
+          </td>
           <td class="price">$12.000</td>
-          <td class="img-cell"><img src="catalogo/COMBO1_abierta.jpg" alt="COMBO-01"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/COMBO1_abierta.jpg" alt="Combo Caja de los Deseos · Estrellas Doradas (Vista Principal)" loading="lazy"><span class="thumb-lbl">Vista Principal</span></div>
+          <div class="thumb-box"><img src="catalogo/COMBO1_caja.jpg" alt="Combo Caja de los Deseos · Estrellas Doradas (Vista Alternativa)" loading="lazy"><span class="thumb-lbl">Vista Alternativa</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">COMBO-02</td>
-          <td><strong>Combo Mini Figuras Navideñas Escultóricas (x7)</strong><span class="sub">Caja x7 velitas figuras 3D</span></td>
-          <td class="price">$12.000</td>
-          <td class="img-cell"><img src="catalogo/COMBO2_abierta.jpg" alt="COMBO-02"></td>
+          <td>
+            <strong>Combo Mini Figuras Navideñas Escultóricas (x7)</strong>
+            <span class="sub">Caja x7 velitas · Figuras surtidas · 🎁 Caja Regalo · 7 Mini Figuras</span>
+            
+          </td>
+          <td class="price">$15.000</td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/COMBO2_abierta.jpg" alt="Combo Mini Figuras Navideñas Escultóricas (x7) (Vista Principal)" loading="lazy"><span class="thumb-lbl">Vista Principal</span></div>
+          <div class="thumb-box"><img src="catalogo/COMBO2_caja.jpg" alt="Combo Mini Figuras Navideñas Escultóricas (x7) (Vista Alternativa)" loading="lazy"><span class="thumb-lbl">Vista Alternativa</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">COMBO-03</td>
-          <td><strong>Combo Dúo Invierno · Muñeco de Nieve y Pino</strong><span class="sub">Caja x2 velas escultóricas</span></td>
-          <td class="price">$24.000</td>
-          <td class="img-cell"><img src="catalogo/COMBO3_abierta.jpg" alt="COMBO-03"></td>
+          <td>
+            <strong>Combo Dúo Invierno · Muñeco de Nieve y Pino</strong>
+            <span class="sub">Caja x2 figuras · Con lazo y viruta · 🎁 Caja Dúo · Muñeco & Pino</span>
+            
+          </td>
+          <td class="price">$25.000</td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/COMBO3_abierta.jpg" alt="Combo Dúo Invierno · Muñeco de Nieve y Pino (Vista Principal)" loading="lazy"><span class="thumb-lbl">Vista Principal</span></div>
+          <div class="thumb-box"><img src="catalogo/COMBO3_caja.jpg" alt="Combo Dúo Invierno · Muñeco de Nieve y Pino (Vista Alternativa)" loading="lazy"><span class="thumb-lbl">Vista Alternativa</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">COMBO-04</td>
-          <td><strong>Combo Trío Navideño · Reno, Jengibre y Pino</strong><span class="sub">Caja x3 velas escultóricas</span></td>
+          <td>
+            <strong>Combo Trío Navideño · Reno, Jengibre y Pino</strong>
+            <span class="sub">Caja x3 figuras · Con lazo y viruta · 🎁 Caja Trío · Reno con Cascabel</span>
+            
+          </td>
           <td class="price">$30.000</td>
-          <td class="img-cell"><img src="catalogo/COMBO4_abierta.jpg" alt="COMBO-04"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/COMBO4_abierta.jpg" alt="Combo Trío Navideño · Reno, Jengibre y Pino (Vista Principal)" loading="lazy"><span class="thumb-lbl">Vista Principal</span></div>
+          <div class="thumb-box"><img src="catalogo/COMBO4_caja.jpg" alt="Combo Trío Navideño · Reno, Jengibre y Pino (Vista Alternativa)" loading="lazy"><span class="thumb-lbl">Vista Alternativa</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">COMBO-05</td>
-          <td><strong>Combo Trío Navideño · Jengibre, Pino & Copo Estrella</strong><span class="sub">Caja x3 velas escultóricas</span></td>
+          <td>
+            <strong>Combo Trío Navideño · Jengibre, Pino & Copo Estrella</strong>
+            <span class="sub">Caja x3 figuras · Con lazo y viruta · 🎁 Caja Trío · Jengibre, Pino & Estrella</span>
+            
+          </td>
           <td class="price">$30.000</td>
-          <td class="img-cell"><img src="catalogo/COMBO5_estrella.jpg" alt="COMBO-05"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/COMBO5_estrella.jpg" alt="Combo Trío Navideño · Jengibre, Pino & Copo Estrella (Vista Principal)" loading="lazy"><span class="thumb-lbl">Vista Principal</span></div>
+          <div class="thumb-box"><img src="catalogo/COMBO5_caja.jpg" alt="Combo Trío Navideño · Jengibre, Pino & Copo Estrella (Vista Alternativa)" loading="lazy"><span class="thumb-lbl">Vista Alternativa</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">COMBO-06</td>
-          <td><strong>Combo Trío Copos Estrella Navideños Escarchados</strong><span class="sub">Caja x3 estrellas · Opcional: Tricolor Metalizado o Blancas con Dorado</span></td>
+          <td>
+            <strong>Combo Trío Copos Estrella Navideños Escarchados</strong>
+            <span class="sub">Caja x3 velas · Colores pasteles o blanco/dorado · ❄️✨ Caja x3 Copos Estrella · 2 Modelos</span>
+            <span class="opt-tags"><span class="opt-badge">Tonos Pastel Escarchados</span> <span class="opt-badge">Blanco Marfil con Filo Dorado</span></span>
+          </td>
           <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/COMBO6_estrellas_colores.jpg" alt="COMBO-06"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/COMBO6_estrellas_colores.jpg" alt="Combo Trío Copos Estrella Navideños Escarchados (Tonos Pastel Escarchados)" loading="lazy"><span class="thumb-lbl">Tonos Pastel Escarchados</span></div>
+          <div class="thumb-box"><img src="catalogo/COMBO6_estrellas_doradas.jpg" alt="Combo Trío Copos Estrella Navideños Escarchados (Blanco Marfil con Filo Dorado)" loading="lazy"><span class="thumb-lbl">Blanco Marfil con Filo Dorado</span></div>
+        </div>
+      </td>
         </tr>
       </tbody>
     </table>
 
-    <h2>🕯️ 2. Velas de los Deseos Ilustradas · Carpeta Corregir (12 Referencias · $20.000)</h2>
+    <!-- 2. MOLDES -->
+    <h2>🕯️ 2. Moldes Escultóricos (11 Referencias · Con Opciones Blancas y Pintadas)</h2>
     <table>
       <thead>
-        <tr><th>Ref</th><th>Nombre del Producto</th><th>Precio</th><th>Imagen</th></tr>
-      </thead>
-      <tbody>
         <tr>
-          <td class="ref">REF-01</td>
-          <td><strong>Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)</strong><span class="sub">Pack x10 velas de colores (ref_1_color)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref1_color.jpg" alt="REF-01"></td>
+          <th>Ref</th>
+          <th>Nombre & Versiones Disponibles</th>
+          <th>Precio</th>
+          <th>Imágenes (Blanca & Pintada)</th>
         </tr>
-        <tr>
-          <td class="ref">REF-02</td>
-          <td><strong>Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)</strong><span class="sub">Pack x10 velas blancas (ref_2_blanco)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref2_blanco.jpg" alt="REF-02"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-03C</td>
-          <td><strong>Velas de los Deseos · Muñecos de Nieve & Pinos (Colores)</strong><span class="sub">Pack x10 velas de colores (ref_3_color)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref3_color.jpg" alt="REF-03C"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-03B</td>
-          <td><strong>Velas de los Deseos · Muñecos de Nieve & Pinos (Blancas)</strong><span class="sub">Pack x10 velas blancas (ref_3_blanco)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref3_blanco.jpg" alt="REF-03B"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-30C</td>
-          <td><strong>Velas de los Deseos · Duendes & Amigos de Invierno (Colores)</strong><span class="sub">Pack x10 velas de colores (ref_30_color)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref30_color.jpg" alt="REF-30C"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-30B</td>
-          <td><strong>Velas de los Deseos · Duendes & Amigos de Invierno (Blancas)</strong><span class="sub">Pack x10 velas blancas (ref_30_blanca)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref30_blanca.jpg" alt="REF-30B"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-31C</td>
-          <td><strong>Velas de los Deseos · Papá Noel, Duendes & Renos (Colores)</strong><span class="sub">Pack x10 velas de colores (ref_31_color)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref31_color.jpg" alt="REF-31C"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-31B</td>
-          <td><strong>Velas de los Deseos · Papá Noel, Duendes & Renos (Blancas)</strong><span class="sub">Pack x10 velas blancas (ref_31_blanca)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref31_blanca.jpg" alt="REF-31B"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-32C</td>
-          <td><strong>Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Colores)</strong><span class="sub">Pack x10 velas de colores (ref_32_color)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref32_color.jpg" alt="REF-32C"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-32B</td>
-          <td><strong>Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Blancas)</strong><span class="sub">Pack x10 velas blancas (ref_32_blanca)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref32_blanca.jpg" alt="REF-32B"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-33C</td>
-          <td><strong>Velas de los Deseos · Pesebre & Reyes Magos Infantil (Colores)</strong><span class="sub">Pack x10 velas de colores (ref_33_color)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref33_color.jpg" alt="REF-33C"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-33B</td>
-          <td><strong>Velas de los Deseos · Pesebre & Reyes Magos Infantil (Blancas)</strong><span class="sub">Pack x10 velas blancas (ref_33_blanca)</span></td>
-          <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/CORREGIR_ref33_blanca.jpg" alt="REF-33B"></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2>✨ 3. Velas de los Deseos · Caligrafía y Farol (6 Referencias)</h2>
-    <table>
-      <thead>
-        <tr><th>Ref</th><th>Nombre del Producto</th><th>Precio</th><th>Imagen</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="ref">REF-08</td>
-          <td><strong>Velas de los Deseos · Caligrafía & Símbolos (Dorado)</strong><span class="sub">Pack x10 velas blancas · Acabado dorado</span></td>
-          <td class="price">$15.000</td>
-          <td class="img-cell"><img src="catalogo/REF8_dorada.jpg" alt="REF-08"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-22</td>
-          <td><strong>Velas de los Deseos · Caligrafía & Símbolos (Multicolor)</strong><span class="sub">Pack x10 velas blancas · Letras multicolor</span></td>
-          <td class="price">$15.000</td>
-          <td class="img-cell"><img src="catalogo/REF8_multicolor.jpg" alt="REF-22"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-10</td>
-          <td><strong>Velas de los Deseos · Caligrafía Clásica (Colores)</strong><span class="sub">Pack x10 velas de colores · Letra plateada</span></td>
-          <td class="price">$25.000</td>
-          <td class="img-cell"><img src="catalogo/REF10_colores.jpg" alt="REF-10"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-24</td>
-          <td><strong>Velas de los Deseos · Caligrafía Clásica (Blancas con Dorado)</strong><span class="sub">Pack x10 velas blancas · Letra dorada</span></td>
-          <td class="price">$25.000</td>
-          <td class="img-cell"><img src="catalogo/REF10_blanca.jpg" alt="REF-24"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-25</td>
-          <td><strong>Velas para Farol · Deseos & Símbolos (Colores)</strong><span class="sub">Pack x10 velas de colores · Letra blanca</span></td>
-          <td class="price">$15.000</td>
-          <td class="img-cell"><img src="catalogo/FAROL_1_colores.jpg" alt="REF-25"></td>
-        </tr>
-        <tr>
-          <td class="ref">REF-26</td>
-          <td><strong>Velas para Farol · Deseos & Símbolos (Blancas con Dorado)</strong><span class="sub">Pack x10 velas blancas · Letra dorada</span></td>
-          <td class="price">$15.000</td>
-          <td class="img-cell"><img src="catalogo/FAROL_2_blancas.jpg" alt="REF-26"></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2>🎄 4. Velas Escultóricas, Cirios y Devoción (10 Referencias)</h2>
-    <table>
-      <thead>
-        <tr><th>Ref</th><th>Nombre del Producto</th><th>Precio</th><th>Imagen</th></tr>
       </thead>
       <tbody>
         <tr>
           <td class="ref">REF-11</td>
-          <td><strong>Pinos Navideños Escultóricos Pintados a Mano</strong><span class="sub">Unidad · Opcional de 4 tonos (Menta, Verde Nevado, Bicolor, Bosque)</span></td>
+          <td>
+            <strong>Pinos Navideños Escultóricos Pintados a Mano</strong>
+            <span class="sub">Vela individual · 4 opciones de color · 🌲 Pino Escultórico · 4 Tonos</span>
+            <span class="opt-tags"><span class="opt-badge">Verde Bosque Tradicional</span> <span class="opt-badge">Blanco Nevado</span> <span class="opt-badge">Rosa Pastel Escarchado</span> <span class="opt-badge">Lavanda Suave</span></span>
+          </td>
           <td class="price">$11.000</td>
-          <td class="img-cell"><img src="catalogo/REF11_arbolitos.jpg" alt="REF-11"></td>
+          <td class="img-cell"><img src="catalogo/REF11_arbolitos.jpg" alt="REF-11 - Pinos Navideños Escultóricos Pintados a Mano" loading="lazy"></td>
         </tr>
         <tr>
           <td class="ref">REF-12</td>
-          <td><strong>Cirio Decorado Artesanal · Cruz & Espigas Doradas</strong><span class="sub">Pieza grande decorada a mano</span></td>
+          <td>
+            <strong>Cirio Decorado Artesanal · Cruz & Espigas Doradas</strong>
+            <span class="sub">Cirio grande de devoción · Acabado dorado · ✨ Cirio Artesanal · Cruz Dorada</span>
+            
+          </td>
           <td class="price">$40.000</td>
-          <td class="img-cell"><img src="catalogo/REF12_cirio.jpg" alt="REF-12"></td>
+          <td class="img-cell"><img src="catalogo/REF12_cirio.jpg" alt="REF-12 - Cirio Decorado Artesanal · Cruz & Espigas Doradas" loading="lazy"></td>
         </tr>
         <tr>
           <td class="ref">REF-13</td>
-          <td><strong>Árbol Casita Navideña Escultórico con Cascabel & Estuche</strong><span class="sub">Incluye estuche · Opcional de 4 tonos</span></td>
+          <td>
+            <strong>Árbol Casita Navideña Escultórico con Cascabel & Estuche</strong>
+            <span class="sub">Vela individual en acetato · 3 colores disponibles · 🏠🎄 Árbol Casita · Con Estuche</span>
+            <span class="opt-tags"><span class="opt-badge">Verde Pino Navideño</span> <span class="opt-badge">Blanco Nevado Marfil</span> <span class="opt-badge">Rosa Suave Pastel</span></span>
+          </td>
           <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/ARB_1.jpg" alt="REF-13"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/ARB_1.jpg" alt="Árbol Casita Navideña Escultórico con Cascabel & Estuche (Verde Pino Navideño)" loading="lazy"><span class="thumb-lbl">Verde Pino Navideño</span></div>
+          <div class="thumb-box"><img src="catalogo/ARB_2.jpg" alt="Árbol Casita Navideña Escultórico con Cascabel & Estuche (Blanco Nevado Marfil)" loading="lazy"><span class="thumb-lbl">Blanco Nevado Marfil</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">REF-14</td>
-          <td><strong>Virgencita Dulce con Filo Dorado Pintado a Mano</strong><span class="sub">Unidad · Opcional de 3 tonos (Blanco Marfil, Azul Celeste, Rosa Pastel)</span></td>
+          <td>
+            <strong>Virgencita Dulce con Filo Dorado Pintado a Mano</strong>
+            <span class="sub">Vela individual · 3 tonos disponibles · 🙏✨ Virgencita Dulce · 3 Tonos</span>
+            <span class="opt-tags"><span class="opt-badge">Blanca con Manto Dorado</span> <span class="opt-badge">Azul Sereno Suave</span> <span class="opt-badge">Rosa Blush Suave</span></span>
+          </td>
           <td class="price">$10.000</td>
-          <td class="img-cell"><img src="catalogo/REF14_virgenes.jpg" alt="REF-14"></td>
+          <td class="img-cell"><img src="catalogo/REF14_virgenes.jpg" alt="REF-14 - Virgencita Dulce con Filo Dorado Pintado a Mano" loading="lazy"></td>
         </tr>
         <tr>
           <td class="ref">REF-15</td>
-          <td><strong>Vela Escultórica Tren de los Sueños · Osito, Casita & Auto</strong><span class="sub">Vela 3D · Doble pabilo</span></td>
+          <td>
+            <strong>Vela Escultórica Tren de los Sueños · Osito, Casita & Auto</strong>
+            <span class="sub">Vela escultórica grande · Doble pabilo · 2 versiones · 🚂🧸 Tren Escultórico · Osito & Casita</span>
+            <span class="opt-tags"><span class="opt-badge">Blanco Marfil</span> <span class="opt-badge">Pintado a Mano</span></span>
+          </td>
           <td class="price">$16.000</td>
-          <td class="img-cell"><img src="catalogo/REF15_tren.jpg" alt="REF-15"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/REF15_tren.jpg" alt="Vela Escultórica Tren de los Sueños · Osito, Casita & Auto (Blanco Marfil)" loading="lazy"><span class="thumb-lbl">Blanco Marfil</span></div>
+          <div class="thumb-box"><img src="catalogo/ref_15.jpeg" alt="Vela Escultórica Tren de los Sueños · Osito, Casita & Auto (Pintado a Mano)" loading="lazy"><span class="thumb-lbl">Pintado a Mano</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">REF-16</td>
-          <td><strong>Sagrada Familia Clásica sobre Base de Rosas</strong><span class="sub">Vela escultórica · Alto relieve</span></td>
+          <td>
+            <strong>Sagrada Familia Clásica sobre Base de Rosas</strong>
+            <span class="sub">Vela de devoción · 2 versiones disponibles · 🤍🌹 Sagrada Familia · Base de Rosas</span>
+            <span class="opt-tags"><span class="opt-badge">Blanco Marfil</span> <span class="opt-badge">Pintada a Mano</span></span>
+          </td>
           <td class="price">$22.000</td>
-          <td class="img-cell"><img src="catalogo/REF16_sagrada_familia_rosas.jpg" alt="REF-16"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/REF16_sagrada_familia_rosas.jpg" alt="Sagrada Familia Clásica sobre Base de Rosas (Blanco Marfil)" loading="lazy"><span class="thumb-lbl">Blanco Marfil</span></div>
+          <div class="thumb-box"><img src="catalogo/REF16_sagrada_familia_rosas_1.jpg" alt="Sagrada Familia Clásica sobre Base de Rosas (Pintada a Mano)" loading="lazy"><span class="thumb-lbl">Pintada a Mano</span></div>
+        </div>
+      </td>
+        </tr>
+        <tr>
+          <td class="ref">REF-40</td>
+          <td>
+            <strong>Nacimiento de Belén</strong>
+            <span class="sub">Vela de devoción · Choza de Belén · 2 versiones · 🤍🌹 Nacimiento de Belén</span>
+            <span class="opt-tags"><span class="opt-badge">Pintado a Mano</span> <span class="opt-badge">Blanco Marfil</span></span>
+          </td>
+          <td class="price">$15.000</td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/ref_40_nacimiento.jpg" alt="Nacimiento de Belén (Pintado a Mano)" loading="lazy"><span class="thumb-lbl">Pintado a Mano</span></div>
+          <div class="thumb-box"><img src="catalogo/ref_40_nacimiento_blanco.jpg" alt="Nacimiento de Belén (Blanco Marfil)" loading="lazy"><span class="thumb-lbl">Blanco Marfil</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">REF-17</td>
-          <td><strong>Sagrada Familia Ternura · Diseño Infantil</strong><span class="sub">Vela escultórica · Diseño tierno</span></td>
+          <td>
+            <strong>Sagrada Familia Ternura · Diseño Infantil</strong>
+            <span class="sub">Vela de devoción · Estilo infantil · 2 versiones · 🤍✨ Sagrada Familia · Estilo Ternura</span>
+            <span class="opt-tags"><span class="opt-badge">Blanco Marfil</span> <span class="opt-badge">Pintada a Mano</span></span>
+          </td>
           <td class="price">$20.000</td>
-          <td class="img-cell"><img src="catalogo/REF17_sagrada_familia_ternura.jpg" alt="REF-17"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/REF17_sagrada_familia_ternura.jpg" alt="Sagrada Familia Ternura · Diseño Infantil (Blanco Marfil)" loading="lazy"><span class="thumb-lbl">Blanco Marfil</span></div>
+          <div class="thumb-box"><img src="catalogo/ref_17.jpeg" alt="Sagrada Familia Ternura · Diseño Infantil (Pintada a Mano)" loading="lazy"><span class="thumb-lbl">Pintada a Mano</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">REF-18</td>
-          <td><strong>Vela Medallón Maternidad · Virgen María & Niño Jesús</strong><span class="sub">Vela ovalada en relieve</span></td>
+          <td>
+            <strong>Vela Medallón Maternidad · Virgen María & Niño Jesús</strong>
+            <span class="sub">Vela ovalada de devoción · 2 acabados · 🤍🙏 Virgen María & Niño Jesús</span>
+            <span class="opt-tags"><span class="opt-badge">Blanco Marfil</span> <span class="opt-badge">Con Borde Bronce Metalizado</span></span>
+          </td>
           <td class="price">$15.000</td>
-          <td class="img-cell"><img src="catalogo/REF18_maria.jpg" alt="REF-18"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/REF18_maria.jpg" alt="Vela Medallón Maternidad · Virgen María & Niño Jesús (Blanco Marfil)" loading="lazy"><span class="thumb-lbl">Blanco Marfil</span></div>
+          <div class="thumb-box"><img src="catalogo/ref_18.jpeg" alt="Vela Medallón Maternidad · Virgen María & Niño Jesús (Con Borde Bronce Metalizado)" loading="lazy"><span class="thumb-lbl">Con Borde Bronce Metalizado</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">REF-19</td>
-          <td><strong>Piña de Pino Navideña Metalizada en Bolsita de Organza</strong><span class="sub">Incluye bolsita · Opcional de 3 tonos (Plateada, Blanca Marfil, Dorada)</span></td>
+          <td>
+            <strong>Piña de Pino Navideña Metalizada en Bolsita de Organza</strong>
+            <span class="sub">Vela individual · Empacada en organza · 🌲✨ Piña Navideña · Con Bolsita</span>
+            <span class="opt-tags"><span class="opt-badge">Dorado Champaña Metalizado</span> <span class="opt-badge">Verde Esmeralda Metalizado</span> <span class="opt-badge">Oro Cálido Metalizado</span></span>
+          </td>
           <td class="price">$12.000</td>
-          <td class="img-cell"><img src="catalogo/REF19_pinas_colores.jpg" alt="REF-19"></td>
+          <td class="img-cell">
+        <div class="dual-thumb-wrap">
+          <div class="thumb-box"><img src="catalogo/REF19_pinas_colores.jpg" alt="Piña de Pino Navideña Metalizada en Bolsita de Organza (Dorado Champaña Metalizado)" loading="lazy"><span class="thumb-lbl">Dorado Champaña Metalizado</span></div>
+          <div class="thumb-box"><img src="catalogo/REF19_pina_bolsita.jpg" alt="Piña de Pino Navideña Metalizada en Bolsita de Organza (Verde Esmeralda Metalizado)" loading="lazy"><span class="thumb-lbl">Verde Esmeralda Metalizado</span></div>
+        </div>
+      </td>
         </tr>
         <tr>
           <td class="ref">REF-20</td>
-          <td><strong>Angelito de Luz con Alas Doradas y Corazón</strong><span class="sub">Vela escultórica · Detalles en oro</span></td>
+          <td>
+            <strong>Angelito de Luz con Alas Doradas y Corazón</strong>
+            <span class="sub">Vela individual · Detalles pintados a mano · 👼✨ Angelito · Alas & Estrella Dorada</span>
+            <span class="opt-tags"><span class="opt-badge">Angelito con Estrella Dorada</span> <span class="opt-badge">Angelito con Corazón Dorado</span></span>
+          </td>
           <td class="price">$11.000</td>
-          <td class="img-cell"><img src="catalogo/REF20_angel.jpg" alt="REF-20"></td>
+          <td class="img-cell"><img src="catalogo/REF20_angel.jpg" alt="REF-20 - Angelito de Luz con Alas Doradas y Corazón" loading="lazy"></td>
         </tr>
       </tbody>
     </table>
+
+    <!-- 3. VELAS -->
+    <h2>✨ 3. Velas (23 Referencias)</h2>
+    
+    <h3>🏮 A. Farol — $15.000 (5 Referencias)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Ref</th>
+          <th>Nombre & Descripción</th>
+          <th>Precio</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ref">REF-25</td>
+          <td>
+            <strong>Velas para Farol · Deseos & Símbolos (Colores)</strong>
+            <span class="sub">Pack x10 velas · Letra blanca · 🏮 Velas Farol · Colores</span>
+            
+          </td>
+          <td class="price">$15.000</td>
+          <td class="img-cell"><img src="catalogo/FAROL_1_colores.jpg" alt="REF-25 - Velas para Farol · Deseos & Símbolos (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-96</td>
+          <td>
+            <strong>Velas para Farol · Deseos & Símbolos (Colores)</strong>
+            <span class="sub">Pack x10 velas · Letra blanca · 🏮 Velas Farol · Colores</span>
+            
+          </td>
+          <td class="price">$15.000</td>
+          <td class="img-cell"><img src="catalogo/FAROL_3_color.jpg" alt="REF-96 - Velas para Farol · Deseos & Símbolos (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-26</td>
+          <td>
+            <strong>Velas para Farol · Deseos & Símbolos (Blancas con Dorado)</strong>
+            <span class="sub">Pack x10 velas · Letra dorada · 🏮 Velas Farol · Blancas con Dorado</span>
+            
+          </td>
+          <td class="price">$15.000</td>
+          <td class="img-cell"><img src="catalogo/FAROL_2_blancas.jpg" alt="REF-26 - Velas para Farol · Deseos & Símbolos (Blancas con Dorado)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-08</td>
+          <td>
+            <strong>Velas para Farol · Caligrafía & Símbolos (Dorado)</strong>
+            <span class="sub">Pack x10 velas · Acabado dorado · 🏮 Velas Farol · Blancas con Dorado</span>
+            
+          </td>
+          <td class="price">$15.000</td>
+          <td class="img-cell"><img src="catalogo/REF8_dorada.jpg" alt="REF-08 - Velas para Farol · Caligrafía & Símbolos (Dorado)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-22</td>
+          <td>
+            <strong>Velas para Farol · Caligrafía & Símbolos (Multicolor)</strong>
+            <span class="sub">Pack x10 velas · Letras multicolor · 🏮 Velas Farol · Multicolor</span>
+            
+          </td>
+          <td class="price">$15.000</td>
+          <td class="img-cell"><img src="catalogo/REF8_multicolor.jpg" alt="REF-22 - Velas para Farol · Caligrafía & Símbolos (Multicolor)" loading="lazy"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>🕯️ B. Velas — $20.000 (16 Referencias)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Ref</th>
+          <th>Nombre & Descripción</th>
+          <th>Precio</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ref">REF-01</td>
+          <td>
+            <strong>Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)</strong>
+            <span class="sub">Pack x10 velas · Colores surtidos · 🕯️ Velas · Animalitos Colores</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref1_color.jpg" alt="REF-01 - Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-02</td>
+          <td>
+            <strong>Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)</strong>
+            <span class="sub">Pack x10 velas · Velas blancas · 🕯️ Velas · Animalitos Blancas</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref2_blanco.jpg" alt="REF-02 - Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-97</td>
+          <td>
+            <strong>Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)</strong>
+            <span class="sub">Pack x10 velas · Colores surtidos · 🕯️ Velas · Animalitos Colores</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/REF97_color.png" alt="REF-97 - Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-97</td>
+          <td>
+            <strong>Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)</strong>
+            <span class="sub">Pack x10 velas · Velas blancas · 🕯️ Velas · Animalitos Blancas</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/REF97_blanco.jpg" alt="REF-97 - Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-98</td>
+          <td>
+            <strong>Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)</strong>
+            <span class="sub">Pack x10 velas · Colores surtidos · 🕯️ Velas · Animalitos Colores</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/Ref98_color.jpeg" alt="REF-98 - Velas de los Deseos · Animalitos & Amigos de Navidad (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-98</td>
+          <td>
+            <strong>Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)</strong>
+            <span class="sub">Pack x10 velas · Velas blancas · 🕯️ Velas · Animalitos Blancas</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/Ref98_Blanco.jpeg" alt="REF-98 - Velas de los Deseos · Animalitos & Amigos de Navidad (Blancas)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-03C</td>
+          <td>
+            <strong>Velas de los Deseos · Muñecos de Nieve & Pinos (Colores)</strong>
+            <span class="sub">Pack x10 velas · Colores surtidos · 🕯️ Velas · Muñecos de Nieve Colores</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref3_color.jpg" alt="REF-03C - Velas de los Deseos · Muñecos de Nieve & Pinos (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-03B</td>
+          <td>
+            <strong>Velas de los Deseos · Muñecos de Nieve & Pinos (Blancas)</strong>
+            <span class="sub">Pack x10 velas · Velas blancas · 🕯️ Velas · Muñecos de Nieve Blancas</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref3_blanco.jpg" alt="REF-03B - Velas de los Deseos · Muñecos de Nieve & Pinos (Blancas)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-30C</td>
+          <td>
+            <strong>Velas de los Deseos · Duendes & Amigos de Invierno (Colores)</strong>
+            <span class="sub">Pack x10 velas · Colores surtidos · 🕯️ Velas · Duendes & Amigos Colores</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref30_color.jpg" alt="REF-30C - Velas de los Deseos · Duendes & Amigos de Invierno (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-30B</td>
+          <td>
+            <strong>Velas de los Deseos · Duendes & Amigos de Invierno (Blancas)</strong>
+            <span class="sub">Pack x10 velas · Velas blancas · 🕯️ Velas · Duendes & Amigos Blancas</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref30_blanca.jpg" alt="REF-30B - Velas de los Deseos · Duendes & Amigos de Invierno (Blancas)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-31C</td>
+          <td>
+            <strong>Velas de los Deseos · Papá Noel, Duendes & Renos (Colores)</strong>
+            <span class="sub">Pack x10 velas · Colores surtidos · 🕯️ Velas · Santa & Duendes Colores</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref31_color.jpg" alt="REF-31C - Velas de los Deseos · Papá Noel, Duendes & Renos (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-31B</td>
+          <td>
+            <strong>Velas de los Deseos · Papá Noel, Duendes & Renos (Blancas)</strong>
+            <span class="sub">Pack x10 velas · Velas blancas · 🕯️ Velas · Santa & Duendes Blancas</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref31_blanca.jpg" alt="REF-31B - Velas de los Deseos · Papá Noel, Duendes & Renos (Blancas)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-32C</td>
+          <td>
+            <strong>Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Colores)</strong>
+            <span class="sub">Pack x10 velas · Colores surtidos · 🕯️ Velas · Franja Verde Colores</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref32_color.jpg" alt="REF-32C - Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-32B</td>
+          <td>
+            <strong>Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Blancas)</strong>
+            <span class="sub">Pack x10 velas · Velas blancas · 🕯️ Velas · Franja Verde Blancas</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref32_blanca.jpg" alt="REF-32B - Velas de los Deseos · Papá Noel en Chimenea Franja Verde (Blancas)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-33C</td>
+          <td>
+            <strong>Velas de los Deseos · Pesebre & Reyes Magos Infantil (Colores)</strong>
+            <span class="sub">Pack x10 velas · Colores surtidos · 🕯️ Velas · Pesebre & Reyes Colores</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref33_color.jpg" alt="REF-33C - Velas de los Deseos · Pesebre & Reyes Magos Infantil (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-33B</td>
+          <td>
+            <strong>Velas de los Deseos · Pesebre & Reyes Magos Infantil (Blancas)</strong>
+            <span class="sub">Pack x10 velas · Velas blancas · 🕯️ Velas · Pesebre & Reyes Blancas</span>
+            
+          </td>
+          <td class="price">$20.000</td>
+          <td class="img-cell"><img src="catalogo/CORREGIR_ref33_blanca.jpg" alt="REF-33B - Velas de los Deseos · Pesebre & Reyes Magos Infantil (Blancas)" loading="lazy"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>✨ C. Yumbo — $25.000 (2 Referencias)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Ref</th>
+          <th>Nombre & Descripción</th>
+          <th>Precio</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ref">REF-10</td>
+          <td>
+            <strong>Velas Yumbo de los Deseos · Caligrafía Clásica (Colores)</strong>
+            <span class="sub">Pack x10 velas · Letra plateada · ✨ Velas Yumbo · Colores</span>
+            
+          </td>
+          <td class="price">$25.000</td>
+          <td class="img-cell"><img src="catalogo/REF10_colores.jpg" alt="REF-10 - Velas Yumbo de los Deseos · Caligrafía Clásica (Colores)" loading="lazy"></td>
+        </tr>
+        <tr>
+          <td class="ref">REF-24</td>
+          <td>
+            <strong>Velas Yumbo de los Deseos · Caligrafía Clásica (Blancas con Dorado)</strong>
+            <span class="sub">Pack x10 velas · Letras doradas · ✨ Velas Yumbo · Blancas con Dorado</span>
+            
+          </td>
+          <td class="price">$25.000</td>
+          <td class="img-cell"><img src="catalogo/REF10_blanca.jpg" alt="REF-24 - Velas Yumbo de los Deseos · Caligrafía Clásica (Blancas con Dorado)" loading="lazy"></td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
 </body>
 </html>
