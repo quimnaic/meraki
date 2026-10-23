@@ -2319,26 +2319,27 @@
           </div>
 
           <h3>Completa tus datos de entrega</h3>
+          <p style="font-size:0.85rem; color:#746157; margin-bottom:14px;">Los campos marcados con <strong>*</strong> son obligatorios para coordinar tu entrega y despacho.</p>
           <div class="form-grid">
             <div class="field full">
               <label>Nombre completo *</label>
               <input type="text" id="fNombre" required placeholder="Ej: María Pérez">
             </div>
             <div class="field">
-              <label>Teléfono / WhatsApp</label>
-              <input type="tel" id="fTelefono" placeholder="Ej: 300 123 4567">
+              <label>Teléfono / WhatsApp *</label>
+              <input type="tel" id="fTelefono" required placeholder="Ej: 300 123 4567">
             </div>
             <div class="field">
-              <label>Fecha en que lo necesitas</label>
+              <label>Fecha en que lo necesitas (opcional)</label>
               <input type="date" id="fFecha">
             </div>
             <div class="field full">
-              <label>Ciudad / barrio de entrega</label>
-              <input type="text" id="fCiudad" placeholder="Ej: Bogotá, Chapinero">
+              <label>Dirección completa de entrega *</label>
+              <input type="text" id="fDireccion" required placeholder="Ej: Cra 15 # 85-30, Apto 401, Bogotá (o barrio / municipio)">
             </div>
             <div class="field full">
               <label>Nota o idea especial (opcional)</label>
-              <textarea id="fNota" placeholder="¿Quieres algún detalle adicional o tienes alguna pregunta? Escríbenos aquí"></textarea>
+              <textarea id="fNota" placeholder="¿Quieres algún detalle adicional o dedicatoria? Escríbenos aquí"></textarea>
             </div>
           </div>
 
@@ -3684,8 +3685,9 @@
     const keys = Object.keys(state);
     const nombre = document.getElementById('fNombre').value.trim();
     const telefono = document.getElementById('fTelefono').value.trim();
+    const direccionInput = document.getElementById('fDireccion') || document.getElementById('fCiudad');
+    const direccion = direccionInput ? direccionInput.value.trim() : '';
     const fecha = document.getElementById('fFecha').value;
-    const ciudad = document.getElementById('fCiudad').value.trim();
     const notaGeneral = document.getElementById('fNota').value.trim();
 
     if(keys.length === 0){
@@ -3693,9 +3695,24 @@
       return;
     }
     if(!nombre){
-      formMsg.textContent = 'Escribe tu nombre completo para enviarte la confirmación por WhatsApp.';
+      formMsg.style.color = '#b83b26';
+      formMsg.textContent = '⚠️ Por favor escribe tu nombre completo.';
+      document.getElementById('fNombre').focus();
       return;
     }
+    if(!telefono){
+      formMsg.style.color = '#b83b26';
+      formMsg.textContent = '⚠️ Por favor escribe tu número de teléfono o WhatsApp.';
+      document.getElementById('fTelefono').focus();
+      return;
+    }
+    if(!direccion){
+      formMsg.style.color = '#b83b26';
+      formMsg.textContent = '⚠️ Por favor escribe la dirección completa de entrega.';
+      if(direccionInput) direccionInput.focus();
+      return;
+    }
+    formMsg.style.color = 'var(--cacao)';
     formMsg.textContent = '';
 
     const lines = [
@@ -3720,8 +3737,8 @@
     lines.push("");
     lines.push("*2. Mis datos de entrega*");
     lines.push(`- Nombre: ${nombre}`);
-    if(telefono) lines.push(`- Teléfono: ${telefono}`);
-    if(ciudad) lines.push(`- Ciudad/barrio: ${ciudad}`);
+    lines.push(`- Teléfono / WhatsApp: ${telefono}`);
+    lines.push(`- Dirección de entrega: ${direccion}`);
     if(fecha) lines.push(`- Fecha para cuando lo necesito: ${fecha}`);
     if(notaGeneral) lines.push(`- Nota adicional: ${notaGeneral}`);
     lines.push("");
