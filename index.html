@@ -48,15 +48,122 @@
   .flake{ position:absolute; top:-5%; color:var(--pearl); opacity:0.7; will-change:transform; animation:fall linear infinite; }
   @keyframes fall{ to{ transform:translateY(108vh) translateX(var(--drift, 20px)) rotate(360deg); } }
 
-  /* ---------- NAV ---------- */
-  nav.topbar{ position:sticky; top:0; z-index:50; background:rgba(36,74,70,0.94); backdrop-filter:blur(6px); }
+    /* ---------- NAV ---------- */
+  nav.topbar{ position:sticky; top:0; z-index:90; background:rgba(36,74,70,0.96); backdrop-filter:blur(8px); box-shadow:0 2px 14px rgba(0,0,0,.12); }
   nav.topbar .wrap{ display:flex; align-items:center; justify-content:space-between; height:66px; }
-  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:1.2rem; color:var(--pearl); }
-  .brand svg{width:18px; height:24px;}
-  nav.topbar ul{display:flex; gap:26px; list-style:none;}
-  nav.topbar ul a{ font-size:0.9rem; font-weight:600; color:var(--pearl); text-decoration:none; opacity:0.85; transition:opacity .2s;}
-  nav.topbar ul a:hover{opacity:1;}
-  @media (max-width:640px){ nav.topbar ul{display:none;} }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:1.25rem; color:var(--pearl); text-decoration:none; transition:opacity .2s; }
+  .brand:hover{ opacity:.92; }
+  .brand svg{ width:18px; height:24px; flex-shrink:0; }
+  .topbar-right{ display:flex; align-items:center; gap:20px; }
+  nav.topbar ul.nav-links{ display:flex; gap:20px; list-style:none; margin:0; padding:0; align-items:center; }
+  nav.topbar ul.nav-links a{ font-size:0.9rem; font-weight:700; color:var(--pearl); text-decoration:none; opacity:0.88; transition:opacity .2s, color .2s; }
+  nav.topbar ul.nav-links a:hover{ opacity:1; color:#F1C28F; }
+
+  /* Botón Catálogo destacado en topbar (Desktop y Móvil) */
+  .topbar-catalog-btn{
+    display:inline-flex; align-items:center; gap:7px;
+    padding:8px 18px; border-radius:999px;
+    background:linear-gradient(135deg, #F1C28F 0%, #D9B77D 100%);
+    color:var(--cacao-deep); font-family:'Nunito',sans-serif;
+    font-size:0.86rem; font-weight:800; text-decoration:none;
+    box-shadow:0 3px 12px rgba(217,183,125,.4);
+    border:1px solid rgba(255,255,255,.45);
+    transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    white-space:nowrap; cursor:pointer;
+  }
+  .topbar-catalog-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 18px rgba(217,183,125,.65);
+    filter:brightness(1.04);
+    color:var(--cacao-deep);
+  }
+  .topbar-catalog-btn .btn-icon{ font-size:1rem; line-height:1; }
+
+  /* Botón hamburguesa móvil */
+  .mobile-menu-toggle{
+    display:none; width:40px; height:40px; border-radius:10px;
+    background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+    flex-direction:column; justify-content:center; align-items:center; gap:5px;
+    cursor:pointer; padding:0; transition:background .2s;
+  }
+  .mobile-menu-toggle:hover{ background:rgba(255,255,255,.18); }
+  .mobile-menu-toggle .bar{
+    display:block; width:20px; height:2px; background:var(--pearl);
+    border-radius:2px; transition:transform .25s ease, opacity .25s ease;
+  }
+  .mobile-menu-toggle.is-open .bar-1{ transform:translateY(7px) rotate(45deg); }
+  .mobile-menu-toggle.is-open .bar-2{ opacity:0; }
+  .mobile-menu-toggle.is-open .bar-3{ transform:translateY(-7px) rotate(-45deg); }
+
+  /* Backdrop & Drawer móvil */
+  .mobile-nav-backdrop{
+    position:fixed; inset:0; background:rgba(20,38,36,.68);
+    backdrop-filter:blur(4px); z-index:95; opacity:0; pointer-events:none;
+    transition:opacity .3s ease;
+  }
+  .mobile-nav-backdrop.is-open{ opacity:1; pointer-events:auto; }
+
+  .mobile-nav-drawer{
+    position:fixed; top:0; right:0; bottom:0; width:min(340px, 86vw);
+    background:linear-gradient(180deg, #1f3e3a 0%, #152d2a 100%);
+    color:var(--pearl); z-index:96; box-shadow:-8px 0 32px rgba(0,0,0,.45);
+    transform:translateX(100%); transition:transform .3s cubic-bezier(0.16, 1, 0.3, 1);
+    display:flex; flex-direction:column; overflow-y:auto; -webkit-overflow-scrolling:touch;
+  }
+  .mobile-nav-drawer.is-open{ transform:translateX(0); }
+
+  .mobile-drawer-header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 20px; border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .mobile-drawer-close{
+    width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.1);
+    border:none; color:var(--pearl); font-size:1.1rem; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s;
+  }
+  .mobile-drawer-close:hover{ background:rgba(255,255,255,.2); }
+
+  .mobile-drawer-body{ padding:20px 18px 30px; display:flex; flex-direction:column; gap:14px; flex:1; }
+
+  .mobile-drawer-cta{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:13px 18px; border-radius:14px;
+    background:linear-gradient(135deg, #F1C28F 0%, #D9B77D 100%);
+    color:var(--cacao-deep); font-weight:800; font-size:0.95rem;
+    text-decoration:none; box-shadow:0 6px 18px rgba(217,183,125,.35);
+    transition:transform .2s;
+  }
+  .mobile-drawer-cta:active{ transform:scale(0.98); }
+
+  .mobile-drawer-links{ display:flex; flex-direction:column; gap:8px; }
+  .mobile-drawer-link{
+    display:flex; align-items:center; gap:14px; padding:12px 14px;
+    border-radius:12px; background:rgba(255,255,255,.05);
+    color:var(--pearl); text-decoration:none; transition:background .2s;
+  }
+  .mobile-drawer-link:hover, .mobile-drawer-link:active{ background:rgba(255,255,255,.12); }
+  .mobile-drawer-link .drawer-icon{ font-size:1.2rem; flex-shrink:0; }
+  .mobile-drawer-link strong{ display:block; font-size:0.92rem; color:var(--pearl); margin-bottom:1px; }
+  .mobile-drawer-link small{ display:block; font-size:0.75rem; color:rgba(255,255,255,.65); }
+  .mobile-drawer-link.is-wa{ background:rgba(37,211,102,.12); border:1px solid rgba(37,211,102,.25); }
+  .mobile-drawer-link.is-wa strong{ color:#99f0be; }
+
+  .mobile-drawer-footer{
+    margin-top:auto; padding-top:16px; border-top:1px solid rgba(255,255,255,.08);
+    font-size:0.78rem; color:rgba(255,255,255,.65); display:flex; flex-direction:column; gap:6px;
+  }
+  .drawer-perk{ color:#F1C28F; font-weight:700; }
+
+  @media (max-width:720px){
+    nav.topbar .wrap{ height:58px; }
+    nav.topbar ul.nav-links{ display:none; }
+    .mobile-menu-toggle{ display:flex; }
+    .topbar-right{ gap:8px; }
+    .topbar-catalog-btn{ padding:6px 12px; font-size:0.8rem; }
+    .brand{ font-size:1.1rem; gap:8px; }
+    .brand svg{ width:16px; height:20px; }
+  }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -1887,6 +1994,19 @@
     border-color:var(--cacao);
   }
 
+
+  /* Responsive Mobile Improvements */
+  @media (max-width:680px){
+    .catalog-search-row{ flex-direction:column; align-items:stretch; gap:10px; }
+    .catalog-search-box{ width:100%; }
+    .catalog-count-pill{ align-self:center; }
+    .field input[type=text], .field textarea, .field input[type=tel], .field input[type=date]{
+      font-size:16px !important; /* Evita zoom automático en Safari iOS */
+    }
+    .step1-bottom-bar{
+      padding-bottom: max(14px, env(safe-area-inset-bottom));
+    }
+  }
 </style>
 </head>
 <body>
@@ -1894,23 +2014,86 @@
 <div class="snow" id="snow"></div>
 <!-- BANNER ENVÍO GRATIS -->
 <aside style="background:linear-gradient(135deg, #F1C28F 0%, #D9B77D 100%); color:var(--cacao-deep); font-weight:800; font-size:0.83rem; text-align:center; padding:9px 16px; position:relative; z-index:60; letter-spacing:0.02em; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-  🚚 <strong>¡Envío GRATIS en Bogotá</strong> por compras superiores a <strong>$60.000</strong>!
+  🚚 <strong>¡Envío GRATIS en Bogotá</strong> por compras superiores a <strong>$50.000</strong>!
 </aside>
 
-<nav class="topbar">
+<nav class="topbar" id="mainTopbar">
   <div class="wrap">
+    <a href="#" class="brand" aria-label="MERAKI - Inicio">
+      <svg viewBox="0 0 20 26" fill="none"><path class="flame" d="M10 0C10 0 4 7 4 12.5C4 16.6 6.7 20 10 20C13.3 20 16 16.6 16 12.5C16 7 10 0 10 0Z" fill="#C9A24B"/></svg>
+      MERAKI
+    </a>
+    <div class="topbar-right">
+      <ul class="nav-links" id="desktopNavLinks">
+        <li><a href="#esencia-meraki">Qué es Meraki</a></li>
+        <li><a href="#como-pedir">Cómo comprar</a></li>
+        <li><a href="#pedido">Mi pedido</a></li>
+      </ul>
+      <!-- Botón destacado Catálogo -->
+      <a href="#productos" class="topbar-catalog-btn" id="topbarCatalogBtn" aria-label="Ver Catálogo de velas">
+        <span class="btn-icon">🕯️</span>
+        <span class="btn-text">Catálogo</span>
+      </a>
+      <!-- Botón hamburguesa móvil -->
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNavDrawer">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Menú Desplegable / Drawer Móvil -->
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+<aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Menú principal móvil" aria-hidden="true">
+  <div class="mobile-drawer-header">
     <div class="brand">
       <svg viewBox="0 0 20 26" fill="none"><path class="flame" d="M10 0C10 0 4 7 4 12.5C4 16.6 6.7 20 10 20C13.3 20 16 16.6 16 12.5C16 7 10 0 10 0Z" fill="#C9A24B"/></svg>
       MERAKI
     </div>
-    <ul>
-      <li><a href="#esencia-meraki">Qué es Meraki</a></li>
-      <li><a href="#como-pedir">Cómo comprar</a></li>
-      <li><a href="#productos">Catálogo</a></li>
-      <li><a href="#pedido">Mi pedido</a></li>
-    </ul>
+    <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Cerrar menú">✕</button>
   </div>
-</nav>
+  <div class="mobile-drawer-body">
+    <a href="#productos" class="mobile-drawer-cta" id="drawerCatalogBtn">
+      <span>🕯️</span> Explorar Catálogo Completo
+    </a>
+    <nav class="mobile-drawer-links">
+      <a href="#esencia-meraki" class="mobile-drawer-link">
+        <span class="drawer-icon">🤍</span>
+        <div>
+          <strong>Qué es Meraki</strong>
+          <small>Nuestra esencia y filosofía</small>
+        </div>
+      </a>
+      <a href="#como-pedir" class="mobile-drawer-link">
+        <span class="drawer-icon">✨</span>
+        <div>
+          <strong>Cómo comprar</strong>
+          <small>Guía rápida paso a paso</small>
+        </div>
+      </a>
+      <a href="#pedido" class="mobile-drawer-link">
+        <span class="drawer-icon">📋</span>
+        <div>
+          <strong>Mi pedido</strong>
+          <small id="mobileDrawerOrderHint">Revisar velas seleccionadas</small>
+        </div>
+      </a>
+      <a href="https://wa.me/573133379203?text=Hola%20MERAKI%20%F0%9F%95%AF%EF%B8%8F%20Quisiera%20asesor%C3%ADa%20personalizada%20con%20el%20cat%C3%A1logo" target="_blank" rel="noopener noreferrer" class="mobile-drawer-link is-wa">
+        <span class="drawer-icon">💬</span>
+        <div>
+          <strong>Escribir al WhatsApp</strong>
+          <small>Asesoría inmediata: +57 313 337 9203</small>
+        </div>
+      </a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <div class="drawer-perk">🚚 Envío gratis en Bogotá por compras > $50.000</div>
+      <div>✦ Velas artesanales hechas con el corazón</div>
+    </div>
+  </div>
+</aside>
 
 <header class="hero">
   <div class="hero-ambient ambient-a" aria-hidden="true"></div>
@@ -2093,14 +2276,14 @@
             <span class="catalog-search-icon" aria-hidden="true">🔍</span>
             <input type="text" id="catalogSearchInput" placeholder="Buscar por referencia o estilo (ej: combos, moldes, farol, velas, yumbo, empresa, jengibre)...">
           </div>
-          <span class="catalog-count-pill" id="catalogCountPill">Mostrando 43 referencias</span>
+          <span class="catalog-count-pill" id="catalogCountPill">Mostrando 42 referencias</span>
         </div>
 
         <div class="catalog-filters" id="catalogFilters" role="tablist" aria-label="Filtrar catálogo">
-          <button type="button" class="filter-pill is-active" data-filter="all">Todas <span class="pill-num">43</span></button>
+          <button type="button" class="filter-pill is-active" data-filter="all">Todas <span class="pill-num">42</span></button>
           <button type="button" class="filter-pill" data-filter="combos">🎁 Combos <span class="pill-num">6</span></button>
           <button type="button" class="filter-pill" data-filter="moldes">🕯️ Moldes <span class="pill-num">11</span></button>
-          <button type="button" class="filter-pill" data-filter="velas">✨ Velas <span class="pill-num">23</span></button>
+          <button type="button" class="filter-pill" data-filter="velas">✨ Velas <span class="pill-num">22</span></button>
           <button type="button" class="filter-pill" data-filter="empresa">🏢 Empresa <span class="pill-num">3</span></button>
         </div>
       </div>
@@ -2234,20 +2417,6 @@
     "priceNote": "Caja lista para regalar"
   },
   {
-    "id": "combo02_figuras_navidenas_x7",
-    "ref": "COMBO-02",
-    "image": "catalogo/COMBO2_abierta.jpg",
-    "imageBox": "catalogo/COMBO2_caja.jpg",
-    "category": "combos",
-    "categoryLabel": "Combos y Cajas de Regalo",
-    "tag": "🎁 Caja Regalo · 7 Mini Figuras",
-    "name": "Combo Mini Figuras Navideñas Escultóricas (x7)",
-    "specs": "Caja x7 velitas · Figuras surtidas",
-    "desc": "7 velitas artesanales en cera blanca y detalles navideños: hombre de nieve, árbol de Navidad, reno, regalo, bota, copo y galleta de jengibre, en caja transparente con lazo dorado.",
-    "price": 15000,
-    "priceNote": "Caja lista para regalar"
-  },
-  {
     "id": "combo03_duo_muneco_pino",
     "ref": "COMBO-03",
     "image": "catalogo/COMBO3_abierta.jpg",
@@ -2279,7 +2448,6 @@
     "id": "combo05_trio_jengibre_pino_estrella",
     "ref": "COMBO-05",
     "image": "catalogo/COMBO5_estrella.jpg",
-    "imageBox": "catalogo/COMBO5_caja.jpg",
     "category": "combos",
     "categoryLabel": "Combos y Cajas de Regalo",
     "tag": "🎁 Caja Trío · Jengibre, Pino & Estrella",
@@ -2293,7 +2461,7 @@
     "id": "combo06_trio_estrellas_escarchadas",
     "ref": "COMBO-06",
     "image": "catalogo/COMBO6_estrellas_colores.jpg",
-    "imageBox": "catalogo/COMBO6_estrellas_doradas.jpg",
+    "imageBox": "catalogo/COMBO6_estrellas_blancas.jpg",
     "category": "combos",
     "categoryLabel": "Combos y Cajas de Regalo",
     "tag": "❄️✨ Caja x3 Copos Estrella · 2 Modelos",
@@ -2307,6 +2475,20 @@
       "Tonos Pastel Escarchados",
       "Blanco Marfil con Filo Dorado"
     ]
+  },
+  {
+    "id": "combo02_figuras_navidenas_x7",
+    "ref": "COMBO-02",
+    "image": "catalogo/COMBO2_abierta.jpg",
+    "imageBox": "catalogo/COMBO2_caja.jpg",
+    "category": "combos",
+    "categoryLabel": "Combos y Cajas de Regalo",
+    "tag": "🎁 Caja Regalo · 7 Mini Figuras",
+    "name": "Combo Mini Figuras Navideñas Escultóricas (x7)",
+    "specs": "Caja x7 velitas · Figuras surtidas",
+    "desc": "7 velitas artesanales en cera blanca y detalles navideños: hombre de nieve, árbol de Navidad, reno, regalo, bota, copo y galleta de jengibre, en caja transparente con lazo dorado.",
+    "price": 15000,
+    "priceNote": "Caja lista para regalar"
   },
   {
     "id": "ref11_arbolitos_navidenos",
@@ -3230,6 +3412,12 @@
     // Mostrar la barra inferior fija solo cuando estamos en el Paso 1 y hay al menos 1 vela elegida
     const showBar = currentWizardStep === 1 && totalItems > 0;
     step1BottomBar.classList.toggle('is-visible', showBar);
+    const mobileDrawerOrderHint = document.getElementById('mobileDrawerOrderHint');
+    if(mobileDrawerOrderHint){
+      mobileDrawerOrderHint.textContent = totalItems > 0 
+        ? `${totalItems} seleccionadas (${formatCOP(totalPrice)})` 
+        : 'Revisar velas seleccionadas';
+    }
   }
 
   function refreshRecap(){
@@ -3281,8 +3469,8 @@
     });
 
     // 3. Ahora que "total" sí existe y está calculado, evalúa el envío gratis y muestra el total
-    const envioGratis = total >= 60000;
-    const faltaParaGratis = 60000 - total;
+    const envioGratis = total >= 50000;
+    const faltaParaGratis = 50000 - total;
     const hasConvenir = keys.some(k => PRODUCTS_BY_ID[k] && PRODUCTS_BY_ID[k].price === 0);
     const totalDisplay = total > 0 
       ? (hasConvenir ? formatCOP(total) + " + cotización empresa" : formatCOP(total))
@@ -3699,6 +3887,72 @@
     f.style.animationDelay = (Math.random()*10) + 's';
     f.style.opacity = 0.35 + Math.random()*0.45;
     snowLayer.appendChild(f);
+  }
+
+  // Control de Menú Móvil (Drawer & Toggle)
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+  const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+  const mobileDrawerClose = document.getElementById('mobileDrawerClose');
+
+  function openMobileDrawer(){
+    if(!mobileNavDrawer) return;
+    mobileNavDrawer.classList.add('is-open');
+    if(mobileNavBackdrop) mobileNavBackdrop.classList.add('is-open');
+    if(mobileMenuToggle){
+      mobileMenuToggle.classList.add('is-open');
+      mobileMenuToggle.setAttribute('aria-expanded', 'true');
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileDrawer(){
+    if(!mobileNavDrawer) return;
+    mobileNavDrawer.classList.remove('is-open');
+    if(mobileNavBackdrop) mobileNavBackdrop.classList.remove('is-open');
+    if(mobileMenuToggle){
+      mobileMenuToggle.classList.remove('is-open');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    }
+    document.body.style.overflow = '';
+  }
+
+  if(mobileMenuToggle){
+    mobileMenuToggle.addEventListener('click', () => {
+      const isOpen = mobileNavDrawer && mobileNavDrawer.classList.contains('is-open');
+      if(isOpen) closeMobileDrawer();
+      else openMobileDrawer();
+    });
+  }
+  if(mobileDrawerClose) mobileDrawerClose.addEventListener('click', closeMobileDrawer);
+  if(mobileNavBackdrop) mobileNavBackdrop.addEventListener('click', closeMobileDrawer);
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')){
+      closeMobileDrawer();
+    }
+  });
+
+  // Interceptar todos los enlaces a #productos (botón Catálogo en barra superior, hero, drawer, footer)
+  document.querySelectorAll('a[href="#productos"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileDrawer();
+      goToStep(1, false);
+      const target = document.getElementById('catalogTopAnchor') || document.getElementById('productos');
+      if(target){
+        target.scrollIntoView({ behavior:'smooth' });
+      }
+    });
+  });
+
+  // Cerrar drawer al hacer click en enlaces del drawer
+  if(mobileNavDrawer){
+    mobileNavDrawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        closeMobileDrawer();
+      });
+    });
   }
 
   // Scroll reveal
